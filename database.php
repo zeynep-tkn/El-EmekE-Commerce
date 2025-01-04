@@ -1,5 +1,5 @@
 <?php
-//veri tabanı bağlantısı
+//veri tabanı sayfamız
 $servername="localhost";
 $username ="root";
 $password ="";

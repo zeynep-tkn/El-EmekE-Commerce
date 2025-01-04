@@ -114,7 +114,9 @@ if (!isset($_SESSION['user_id'])) {
             <div style="margin-left: 0px;">
                 <i class="bi bi-search text-white fs-5"></i>
                 <i class="bi bi-heart text-white fs-5" style="margin-left: 20px;"></i>
-                <i class="bi bi-cart3 text-white fs-5" style="margin-left: 20px;"></i>
+                <a href="php/my_cart.php">
+        <i class="bi bi-cart3 text-white fs-5" style="margin-left: 20px;"></i>
+    </a>
             </div> 
                 <div class="d-flex me-3 " href="#" style="margin-left: 145px;" >
                     <i class="bi bi-person-circle text-white fs-4"></i>
@@ -435,14 +437,15 @@ if (!isset($_SESSION['user_id'])) {
 
 <div class="container bg-light mt-5 ">
   <div class="row px-5">
+
     <div class="col-6 ">
       <div class="a container bg-white " style="border-radius: 5%;">
         <div class="row mt-5 mb-5 ">
           <div class="col-6  text-center ">
-            <img src="images/30.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
+            <img src="images/sutreceli.jpeg" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
           </div>
           <div class="col-6 ">
-            <div class="baslik3 fw-bold " style="font-size: 21px;">Chicken Salad Seeds</div>
+            <div class="baslik3 fw-bold " style="font-size: 21px;">Süt Reçeli</div>
             <div class="starts" style="color:rgb(244, 74, 51) ;">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -451,21 +454,23 @@ if (!isset($_SESSION['user_id'])) {
               <i class="bi bi-star-fill"></i>
             </div>
             <div style="font-size: 15px;margin-top: 10px;">
-              There are many variations of passages look slightly believable.
+              El yapımı sağlıklı süt reçeli
             </div>
             <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-              $25.00
+              100.00 TL
             </div>
             <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-              $50.00
+              150.00 TL
             </div>
             <div>
-              <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
+              <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete ekle</button>
             </div>
           </div>
         </div>
       </div>
       </div>
+
+
       <div class="col-6 bg-light ">
         <div class="a container bg-white mb-3" style="border-radius: 5%;">
           <div class="row mt-5 mb-5 ">
@@ -531,6 +536,8 @@ if (!isset($_SESSION['user_id'])) {
           </div>
         </div>
         </div>
+
+
         <div class="col-6 bg-light ">
           <div class="a container bg-white mb-3" style="border-radius: 5%;">
             <div class="row mt-5 mb-5">

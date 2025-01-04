@@ -1,21 +1,38 @@
-<?php 
-//Kayıt olma sayfası
-//zey3@gmail.com   321
-include('../database.php');
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+<?php
+include('../database.php'); // Veritabanı bağlantısı
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+    $password = $_POST['password'];
+    $role = $_POST['role']; // Formdan gelen rol
 
-    $sql = "INSERT INTO users(username, email, password) VALUES('$username','$email','$password')";
+    // Şifreyi hashle
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if($conn->query($sql)== TRUE){
-        header("Location: http://localhost/El-Emek/index.php");
+    // Genel kullanıcı tablosuna ekleme
+    $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')";
+    if (mysqli_query($conn, $query)) {
+        $user_id = mysqli_insert_id($conn); // Eklenen kullanıcının ID'sini al
 
+        // Role göre ilgili tabloya ekleme
+        if ($role == 'admin') {
+            $admin_query = "INSERT INTO admin (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $admin_query);
+        } elseif ($role == 'seller') {
+            $seller_query = "INSERT INTO satici (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $seller_query);
+        } elseif ($role == 'customer') {
+            $customer_query = "INSERT INTO musteri (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $customer_query);
+        }
+
+        // Başarılı kayıt
+        echo "Kayıt başarılı! Hoş geldiniz, $username.";
+        header("Location: login.php"); // Login sayfasına yönlendirme
         exit();
-    }
-    else{
-        echo "Hata: " . $sql . "<br>" . $conn->error;
+    } else {
+        echo "Kayıt sırasında bir hata oluştu.";
     }
 }
 ?>
@@ -101,10 +118,16 @@ body {
        <input type="text" name="username" id="username" placeholder="Kullanıcı Adı" required><br><br>
        <input type="email" name="email" id="email" placeholder="E-posta" required>
        <input type="password" name="password" id="password" placeholder="Şifre" required>
-       
+       <label for="role">Rol Seçin:</label>
+          <select id="role" name="role" required>
+            <option value="customer">Müşteri</option>
+            <option value="seller">Satıcı</option>
+            <option value="admin">Admin</option>
+          </select><br>
        <button type="submit">Kayıt Ol</button>
     </form>
 </div>
+
 
 </body>
 <html>
