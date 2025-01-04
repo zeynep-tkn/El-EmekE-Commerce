@@ -123,18 +123,23 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="php/login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
                       Giriş Yap
                   </a>
-                </div>
-                
+                </div>  
             </div>
-            
-
-            
-        </div>
-        
+        </div>  
             </div>
         </div>
     </nav>
 
+
+
+
+
+
+
+
+
+
+    
     <div class="container-fluid ">
         <div class="row  position-relative">
             <div class="slideshow">
