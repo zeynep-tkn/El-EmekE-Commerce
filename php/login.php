@@ -1,9 +1,10 @@
 <?php
-//login sayfamız
+// login sayfası
 include('../database.php');
-$error="";
+$error = "";
 session_start();
-// Veritabanı bağlantısını ekle
+
+// Form gönderimi kontrolü
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Formdan gelen veriler
     $email = $_POST['email'];
@@ -12,21 +13,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Veritabanında kullanıcıyı kontrol et
     $query = "SELECT * FROM users WHERE email='$email'";
     $result = mysqli_query($conn, $query);
-    $user = mysqli_fetch_assoc($result);
 
-    // Kullanıcı varsa ve şifre doğruysa
-    if ($user && password_verify($password, $user['password'])) {
-        // Giriş başarılı, oturum başlat ve ana sayfaya yönlendir
-        $_SESSION['user_id'] = $user['id']; // Kullanıcı oturum bilgisi
-        header("Location: /El-Emek/index.php");
-        // Ana sayfaya yönlendir
-        exit();
+    // Kullanıcı bulunduysa
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+
+        // Şifre doğrulaması
+        if (password_verify($password, $user['password'])) {
+            // Giriş başarılı, oturum bilgilerini başlat
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role']; // Kullanıcı rolünü oturuma ekle
+
+            // Rol tabanlı yönlendirme
+            if ($user['role'] === 'admin') {
+                header("Location: /El-Emek/php/admin_dashboard.php");//admin, admin_dashboard sayfasına yönlenidirilecek
+            } elseif ($user['role'] === 'seller') {
+                header("Location: /El-Emek/php/seller_dashboard.php");//satıcı, seller_dashboard sayfasına yönlendirilecek
+            } else {
+                header("Location: /El-Emek/index.php");//müşteri ana sayfaya yönlendirilecek
+            }
+            exit();
+        } else {
+            // Hatalı şifre
+            $error = "Hatalı şifre. Lütfen tekrar deneyin.";
+        }
     } else {
-        // Giriş başarısız
-        $error= "Hatalı e-posta veya şifre. Lütfen tekrar deneyin";
+        // Kullanıcı bulunamadı
+        $error = "Hatalı e-posta veya şifre. Lütfen tekrar deneyin.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="tr">

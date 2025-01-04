@@ -1,17 +1,17 @@
 <?php 
 //Kayıt olma sayfası
-//zey3@gmail.com   321
 include('../database.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-
+    $role = $_POST['role']; // Rol bilgisi al
     $sql = "INSERT INTO users(username, email, password) VALUES('$username','$email','$password')";
 
-    if($conn->query($sql)== TRUE){
-        header("Location: http://localhost/El-Emek/index.php");
-
+     // Veritabanına ekleme
+     $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', '$role')";
+     if (mysqli_query($conn, $query)) {
+        header("Location: http://localhost/El-Emek/php/login.php");
         exit();
     }
     else{
@@ -101,10 +101,16 @@ body {
        <input type="text" name="username" id="username" placeholder="Kullanıcı Adı" required><br><br>
        <input type="email" name="email" id="email" placeholder="E-posta" required>
        <input type="password" name="password" id="password" placeholder="Şifre" required>
-       
+       <label for="role">Rol Seçin:</label>
+          <select id="role" name="role" required>
+            <option value="customer">Müşteri</option>
+            <option value="seller">Satıcı</option>
+            <option value="admin">Admin</option>
+          </select><br>
        <button type="submit">Kayıt Ol</button>
     </form>
 </div>
+
 
 </body>
 <html>
