@@ -1,4 +1,5 @@
 <?php
+//admin panel sayfası
 session_start();
 include('../database.php');
 //rolü admin değilse logine geç

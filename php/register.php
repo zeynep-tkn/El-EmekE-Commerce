@@ -1,21 +1,38 @@
-<?php 
-//Kayıt olma sayfası
-include('../database.php');
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+<?php
+include('../database.php'); // Veritabanı bağlantısı
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-    $role = $_POST['role']; // Rol bilgisi al
-    $sql = "INSERT INTO users(username, email, password) VALUES('$username','$email','$password')";
+    $password = $_POST['password'];
+    $role = $_POST['role']; // Formdan gelen rol
 
-     // Veritabanına ekleme
-     $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', '$role')";
-     if (mysqli_query($conn, $query)) {
-        header("Location: http://localhost/El-Emek/php/login.php");
+    // Şifreyi hashle
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Genel kullanıcı tablosuna ekleme
+    $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')";
+    if (mysqli_query($conn, $query)) {
+        $user_id = mysqli_insert_id($conn); // Eklenen kullanıcının ID'sini al
+
+        // Role göre ilgili tabloya ekleme
+        if ($role == 'admin') {
+            $admin_query = "INSERT INTO admin (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $admin_query);
+        } elseif ($role == 'seller') {
+            $seller_query = "INSERT INTO satici (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $seller_query);
+        } elseif ($role == 'customer') {
+            $customer_query = "INSERT INTO musteri (User_ID) VALUES ('$user_id')";
+            mysqli_query($conn, $customer_query);
+        }
+
+        // Başarılı kayıt
+        echo "Kayıt başarılı! Hoş geldiniz, $username.";
+        header("Location: login.php"); // Login sayfasına yönlendirme
         exit();
-    }
-    else{
-        echo "Hata: " . $sql . "<br>" . $conn->error;
+    } else {
+        echo "Kayıt sırasında bir hata oluştu.";
     }
 }
 ?>
