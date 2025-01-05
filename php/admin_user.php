@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Paneli</title>
+    <title>Admin Kullanıcı Yönetimi</title>
      <!-- !BOOTSTRAP'S CSS-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- !BOOTSTRAP'S CSS-->
@@ -43,8 +43,7 @@ $result = mysqli_query($conn, $query);
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
     <div class="container-fluid">
         <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
-         
-            <div class="baslik fs-3"> Admin</div>
+            <div class="baslik fs-3"> Admin </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -103,37 +102,7 @@ $result = mysqli_query($conn, $query);
 </nav>
 
 <div class="container mt-5">
-    <h1>Admin Paneli</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Toplam Kullanıcı</div>
-                <div class="card-body">
-                    <h5 class="card-title">150</h5>
-                    <p class="card-text">Sistemde kayıtlı toplam kullanıcı sayısı.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-header">Aktif Satıcılar</div>
-                <div class="card-body">
-                    <h5 class="card-title">50</h5>
-                    <p class="card-text">Sistemde aktif olarak satış yapan satıcı sayısı.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-danger mb-3">
-                <div class="card-header">Pasif Kullanıcılar</div>
-                <div class="card-body">
-                    <h5 class="card-title">20</h5>
-                    <p class="card-text">Sistemde pasif durumda olan kullanıcı sayısı.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <h1>Admin Kullanıcı Yönetimi</h1>
     <h2>Kullanıcılar</h2>
     <table class="table table-bordered">
         <thead>
@@ -143,28 +112,32 @@ $result = mysqli_query($conn, $query);
                 <th>Email</th>
                 <th>Rol</th>
                 <th>Durum</th>
-
+                <th>İşlem</th>
             </tr>
         </thead>
         <tbody>
-        <?php while ($user = mysqli_fetch_assoc($result)) { ?>
-<tr>
-    <td><?php echo $user['id']; ?></td>
-    <td><?php echo $user['username']; ?></td>
-    <td><?php echo $user['email']; ?></td>
-    <td><?php echo $user['role']; ?></td>
-    <td>
+            <?php while ($user = mysqli_fetch_assoc($result)) { ?>
+            <tr>
+                <td><?php echo $user['id']; ?></td>
+                <td><?php echo $user['username']; ?></td>
+                <td><?php echo $user['email']; ?></td>
+                <td><?php echo $user['role']; ?></td>
+                <td>
         <?php 
         $status = $user['status'] ?? 'Pasif';
         echo $status == 1 ? 'Aktif' : 'Pasif';
         ?>
     </td>
-</tr>
-<?php } ?>
+                <td>
+                    <a href="edit_user.php?id=<?php echo $user['id']; ?>" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a href="delete_user.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-sm">Sil</a>
+                </td>
+            </tr>
+            <?php } ?>
         </tbody>
     </table>
 </div>
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- !BOOTSTRAP'S jS-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

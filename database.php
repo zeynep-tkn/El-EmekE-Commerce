@@ -1,9 +1,9 @@
 <?php
-//veri tabanı sayfamız
+//veri tabanı sayfamız elemekdb
 $servername="localhost";
 $username ="root";
 $password ="";
-$dbname="user_registration";
+$dbname="elemekdb";
 
 //Bağlantıyı oluştur
 $conn =new mysqli($servername,$username,$password,$dbname);

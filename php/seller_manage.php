@@ -1,16 +1,19 @@
 <?php
-//admin panel sayfası
+// satıcı panel sayfası
 session_start();
 include('../database.php');
-//rolü admin değilse logine geç
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: login.php");
     exit();
 }
 
-$query = "SELECT * FROM users WHERE role='seller' OR role='customer'";
+$seller_id = $_SESSION['user_id'];
+$query = "SELECT * FROM Urun WHERE Satici_ID = '$seller_id'";
 $result = mysqli_query($conn, $query);
 
+if (!$result) {
+    die("Sorgu başarısız: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ $result = mysqli_query($conn, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Paneli</title>
+    <title>Satıcı Yönetim</title>
      <!-- !BOOTSTRAP'S CSS-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- !BOOTSTRAP'S CSS-->
@@ -44,52 +47,32 @@ $result = mysqli_query($conn, $query);
     <div class="container-fluid">
         <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
          
-            <div class="baslik fs-3"> Admin</div>
+            <div class="baslik fs-3"> ELEMEK</div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 110px;">
-                <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="admin_user.php">
-                        Kullanıcı Yönetimi
+            <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_dashboard.php">
+                        Satıcı Paneli
                     </a>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                        Mağaza Yönetimi
+                    </a>
+                </li>
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="manage_product.php">
                         Ürün Yönetimi
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Shop</a>
-                        <a class="dropdown-item" href="#">Shop Details</a>
-                        <a class="dropdown-item" href="#">Shop Details Coffee</a>
-                        <a class="dropdown-item" href="#">Cart</a>
-                        <a class="dropdown-item" href="#">Checkout</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Satıcı Doğrulama
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                        Sipariş Yönetimi
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Blog Grid One</a>
-                        <a class="dropdown-item" href="#">Blog Grid Two</a>
-                        <a class="dropdown-item" href="#">Blog Standard</a>
-                        <a class="dropdown-item" href="#">Blog Deails</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ürün Doğrulama
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">About</a>
-                        <a class="dropdown-item" href="#">Chefs</a>
-                        <a class="dropdown-item" href="#">Faq</a>
-                        <a class="dropdown-item" href="#">Reservation</a>
-                        <a class="dropdown-item" href="#">Food Menu</a>
-                    </div>
                 </li>
             </ul>
             <div class="d-flex me-3" href="#" style="margin-left: 145px;">
@@ -103,66 +86,38 @@ $result = mysqli_query($conn, $query);
 </nav>
 
 <div class="container mt-5">
-    <h1>Admin Paneli</h1>
+    <h1>Satıcı Yönetim Paneli</h1>
     <div class="row">
         <div class="col-md-4">
             <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Toplam Kullanıcı</div>
+                <div class="card-header">Toplam Ürün</div>
                 <div class="card-body">
                     <h5 class="card-title">150</h5>
-                    <p class="card-text">Sistemde kayıtlı toplam kullanıcı sayısı.</p>
+                    <p class="card-text">Sistemde kayıtlı toplam ürün sayısı.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card text-white bg-success mb-3">
-                <div class="card-header">Aktif Satıcılar</div>
+                <div class="card-header">Aktif Ürünler</div>
                 <div class="card-body">
                     <h5 class="card-title">50</h5>
-                    <p class="card-text">Sistemde aktif olarak satış yapan satıcı sayısı.</p>
+                    <p class="card-text">Sistemde aktif olarak satış yapan ürün sayısı.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card text-white bg-danger mb-3">
-                <div class="card-header">Pasif Kullanıcılar</div>
+                <div class="card-header">Kaldırılan Ürünler</div>
                 <div class="card-body">
                     <h5 class="card-title">20</h5>
-                    <p class="card-text">Sistemde pasif durumda olan kullanıcı sayısı.</p>
+                    <p class="card-text">Sistemde pasif durumda olan ürün sayısı.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h2>Kullanıcılar</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Adı Soyadı</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Durum</th>
-
-            </tr>
-        </thead>
-        <tbody>
-        <?php while ($user = mysqli_fetch_assoc($result)) { ?>
-<tr>
-    <td><?php echo $user['id']; ?></td>
-    <td><?php echo $user['username']; ?></td>
-    <td><?php echo $user['email']; ?></td>
-    <td><?php echo $user['role']; ?></td>
-    <td>
-        <?php 
-        $status = $user['status'] ?? 'Pasif';
-        echo $status == 1 ? 'Aktif' : 'Pasif';
-        ?>
-    </td>
-</tr>
-<?php } ?>
-        </tbody>
-    </table>
+    <h2>Ürünler</h2>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

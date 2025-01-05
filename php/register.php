@@ -19,10 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($role == 'admin') {
             $admin_query = "INSERT INTO admin (User_ID) VALUES ('$user_id')";
             mysqli_query($conn, $admin_query);
-        } elseif ($role == 'seller') {
-            $seller_query = "INSERT INTO satici (User_ID) VALUES ('$user_id')";
-            mysqli_query($conn, $seller_query);
-        } elseif ($role == 'customer') {
+        } 
+       
+        elseif ($role == 'customer') {
             $customer_query = "INSERT INTO musteri (User_ID) VALUES ('$user_id')";
             mysqli_query($conn, $customer_query);
         }
