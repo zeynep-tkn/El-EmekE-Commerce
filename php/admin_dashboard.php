@@ -52,6 +52,11 @@ $result = mysqli_query($conn, $query);
         <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 110px;">
                 <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="admin_dashboard.php">
+                        Admin Paneli
+                    </a>
+                </li>
+                <li class="nav-item ps-3">
                     <a id="navbarDropdown" class="nav-link" href="admin_user.php">
                         Kullanıcı Yönetimi
                     </a>
