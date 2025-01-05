@@ -1,5 +1,5 @@
 <?php
-//veri tabanına ürün ekleme tablosu
+//veri tabanına ürün ekleme 
 session_start();
 include('../database.php');
 

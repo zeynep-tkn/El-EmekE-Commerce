@@ -1,4 +1,5 @@
 <?php
+//düzenleme yapılacak şu an çalışmıyor
 session_start();
 include('../database.php');
 
@@ -12,7 +13,7 @@ $seller_id = $_SESSION['user_id'];
 
 // Ürün ID kontrolü
 if (!isset($_GET['product_id'])) {
-    header("Location: product_management.php");
+    header("Location: manage_product.php");
     exit();
 }
 
@@ -104,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="checkbox" id="product_active" name="product_active" <?= $product['Aktiflik_Durumu'] ? 'checked' : '' ?>>
         </div>
         <button type="submit">Güncelle</button>
-        <a href="product_management.php">İptal</a>
+        <a href="manage_product.php">İptal</a>
     </form>
 </body>
 </html>
