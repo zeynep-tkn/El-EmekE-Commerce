@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } elseif ($user['role'] === 'seller') {
                 header("Location: /El-Emek/php/seller_dashboard.php");//satıcı, seller_dashboard sayfasına yönlendirilecek
             } else {
-                header("Location: /El-Emek/php/customer_dashboard.php");//müşteri customer_dashboard yönlendirilecek
+                header("Location: /El-Emek/index.php");//müşteri customer_dashboard yönlendirilecek
             }
             exit();
         } else {
