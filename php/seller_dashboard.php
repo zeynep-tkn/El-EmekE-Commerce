@@ -22,6 +22,120 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satıcı Paneli</title>
+    <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.store-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.store-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.store-info {
+    flex-grow: 1;
+}
+
+.store-name {
+    margin: 0;
+    font-size: 24px;
+}
+
+.seller-name {
+    margin: 5px 0;
+    color: #777;
+}
+
+.follow-button {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.follow-button:hover {
+    background-color: #ff3b2f;
+}
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+    width: 30%; /* Bu değeri ekleyerek arama çubuğunun genişliğini ayarlayabilirsiniz */
+    margin-left: auto; /* Bu değeri ekleyerek arama çubuğunu ortalayabilirsiniz */
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.search-bar button:hover {
+    background-color: #ff3b2f;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background-color: #fff;
+    padding: 5px; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Box-shadow değerini küçülttüm */
+    width: calc(30% - 60px); /* Genişliği biraz küçülttüm */
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.product-image {
+    width: 100%;
+    height: 40%;
+}
+
+.product-name {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.product-price {
+    color: #ff6f61;
+    font-size: 16px;
+}
+    </style>
+
+
      <!-- !BOOTSTRAP'S CSS-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- !BOOTSTRAP'S CSS-->
@@ -55,44 +169,24 @@ if (!$result) {
         <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 110px;">
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="admin_user.php">
-                        Satıcı Yönetimi 
+                    <a id="navbarDropdown" class="nav-link" href="seller_dashboard.php">
+                        Satıcı Paneli
                     </a>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                        Mağaza Yönetimi
+                    </a>
+                </li>
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
                         Ürün Yönetimi
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Shop</a>
-                        <a class="dropdown-item" href="#">Shop Details</a>
-                        <a class="dropdown-item" href="#">Shop Details Coffee</a>
-                        <a class="dropdown-item" href="#">Cart</a>
-                        <a class="dropdown-item" href="#">Checkout</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Satıcı Doğrulama
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                        Sipariş Yönetimi
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Blog Grid One</a>
-                        <a class="dropdown-item" href="#">Blog Grid Two</a>
-                        <a class="dropdown-item" href="#">Blog Standard</a>
-                        <a class="dropdown-item" href="#">Blog Deails</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ürün Doğrulama
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">About</a>
-                        <a class="dropdown-item" href="#">Chefs</a>
-                        <a class="dropdown-item" href="#">Faq</a>
-                        <a class="dropdown-item" href="#">Reservation</a>
-                        <a class="dropdown-item" href="#">Food Menu</a>
-                    </div>
                 </li>
             </ul>
             <div class="d-flex me-3" href="#" style="margin-left: 145px;">
@@ -106,7 +200,71 @@ if (!$result) {
 </nav>
 
 <div class="container mt-5">
-    <h1>Satıcı Paneli</h1>
+    <div class="container">
+        <div class="store-header">
+            <img src="../images/magaza.png" class="store-image">
+            <div class="store-info">
+                <h1 class="store-name">Mağaza Adı</h1>
+                <p class="seller-name">Satıcı Adı Soyadı</p>
+                <button class="follow-button">Takip Et</button>
+            </div>
+            </div>
+            <div class="search-bar">
+              <input type="text" id="search-input" placeholder="Ürün ara...">
+              <button onclick="searchProducts()">Ara</button>
+           </div>
+
+        <div class="products">
+            <!-- Ürünler buraya gelecek -->
+            <div class="product">
+                <img src="../images/59.png" alt="Ürün 1" class="product-image">
+                <p class="product-name">Ürün Adı 1</p>
+                <p class="product-price">₺100</p>
+            </div>
+            <div class="product">
+                <img src="../images/60.png" alt="Ürün 2" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/59.png" alt="Ürün 3" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/60.png" alt="Ürün 4" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/59.png" alt="Ürün 5" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/60.png" alt="Ürün 6" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/60.png" alt="Ürün 7" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/59.png" alt="Ürün 8" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <div class="product">
+                <img src="../images/60.png" alt="Ürün 9" class="product-image">
+                <p class="product-name">Ürün Adı 2</p>
+                <p class="product-price">₺200</p>
+            </div>
+            <!-- Daha fazla ürün ekleyebilirsiniz -->
+        </div>
+    </div>
+
 </div>
 
 
@@ -118,5 +276,20 @@ if (!$result) {
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        function searchProducts() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const products = document.getElementsByClassName('product');
+
+    for (let i = 0; i < products.length; i++) {
+        const productName = products[i].getElementsByClassName('product-name')[0].innerText.toLowerCase();
+        if (productName.includes(input)) {
+            products[i].style.display = '';
+        } else {
+            products[i].style.display = 'none';
+        }
+    }
+}
+    </script>
 </body>
 </html>

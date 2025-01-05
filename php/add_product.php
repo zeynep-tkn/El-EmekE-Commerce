@@ -1,5 +1,6 @@
 <?php
 //Ürün ekleme sayfası
+//boş şu an
 session_start();
 include('../database.php');
 
