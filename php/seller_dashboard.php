@@ -22,32 +22,101 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satıcı Paneli</title>
+     <!-- !BOOTSTRAP'S CSS-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- !BOOTSTRAP'S CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Montserrat:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="stylesheet" href="css/css.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Montserrat:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+ <script src="https://code.jquery.com/jquery-1.8.2.min.js" integrity="sha256-9VTS8JJyxvcUR+v+RTLTsd0ZWbzmafmlzMmeZO9RFyk=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
 </head>
 <body>
-    <h1>Satıcı Paneli</h1>
-    <h2>Ürünler</h2>
-    <table border="1">
-        <tr>
-            <th>Ürün Adı</th>
-            <th>Fiyat</th>
-            <th>Stok</th>
-            <th>Durum</th>
-            <th>İşlemler</th>
-        </tr>
-        <?php while ($product = mysqli_fetch_assoc($result)) { ?>
-        <tr>
-            <td><?php echo $product['Urun_Adi']; ?></td>
-            <td><?php echo $product['Urun_Fiyati']; ?> TL</td>
-            <td><?php echo $product['Stok_Adedi']; ?></td>
-            <td><?php echo $product['Aktiflik_Durumu'] ? 'Aktif' : 'Pasif'; ?></td>
-            <td>
-                <a href="edit_product.php?id=<?php echo $product['Urun_ID']; ?>">Düzenle</a>
-                <a href="delete_product.php?id=<?php echo $product['Urun_ID']; ?>">Sil</a>
-            </td>
-        </tr>
-        <?php } ?>
-    </table>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
+         
+            <div class="baslik fs-3"> ELEMEK</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 110px;">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="admin_user.php">
+                        Satıcı Yönetimi 
+                    </a>
+                </li>
+                <li class="nav-item dropdown ps-3">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Ürün Yönetimi
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Shop</a>
+                        <a class="dropdown-item" href="#">Shop Details</a>
+                        <a class="dropdown-item" href="#">Shop Details Coffee</a>
+                        <a class="dropdown-item" href="#">Cart</a>
+                        <a class="dropdown-item" href="#">Checkout</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ps-3">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Satıcı Doğrulama
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Blog Grid One</a>
+                        <a class="dropdown-item" href="#">Blog Grid Two</a>
+                        <a class="dropdown-item" href="#">Blog Standard</a>
+                        <a class="dropdown-item" href="#">Blog Deails</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ps-3">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Ürün Doğrulama
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">About</a>
+                        <a class="dropdown-item" href="#">Chefs</a>
+                        <a class="dropdown-item" href="#">Faq</a>
+                        <a class="dropdown-item" href="#">Reservation</a>
+                        <a class="dropdown-item" href="#">Food Menu</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="d-flex me-3" href="#" style="margin-left: 145px;">
+                <i class="bi bi-person-circle text-white fs-4"></i>
+                <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+                    Giriş Yap
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-    <a href="add_product.php"><button>Ürün Ekle</button></a>
+<div class="container mt-5">
+    <h1>Satıcı Paneli</h1>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- !BOOTSTRAP'S jS-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- !BOOTSTRAP'S jS-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </body>
 </html>
