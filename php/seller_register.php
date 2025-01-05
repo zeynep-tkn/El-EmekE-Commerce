@@ -22,27 +22,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // `users` tablosuna ekle ve role'ü seller olarak ayarla
         $user_query = "INSERT INTO users (username, email, password, role) VALUES ('$name', '$email', '$password', 'seller')";
+        
         // users tablosuna ekleme
-if (mysqli_query($conn, $user_query)) {
-    $user_id = mysqli_insert_id($conn);
-    if ($user_id) {
-        // satici tablosuna ekleme
-        $tckn_vkn = null;  // Boş bir değer gönder
-        $seller_query = "INSERT INTO satici (User_ID, TCKN_VKN, Magaza_Adi, Ad_Soyad, Tel_No, Eposta, Adres, HesapDurumu) 
-                 VALUES ($user_id, NULL, '$store_name', '$name', '$phone', '$email', '$address', $status)";
-        if (!mysqli_query($conn, $seller_query)) {
-            die("Satıcı kaydı sırasında hata oluştu: " . mysqli_error($conn));
+        if (mysqli_query($conn, $user_query)) {
+            $user_id = mysqli_insert_id($conn);
+            if ($user_id) {
+                // satici tablosuna ekleme
+                $tckn_vkn = null;  // Boş bir değer gönder
+                $seller_query = "INSERT INTO satici (User_ID, TCKN_VKN, Magaza_Adi, Ad_Soyad, Tel_No, Eposta, Adres, HesapDurumu) 
+                                 VALUES ($user_id, NULL, '$store_name', '$name', '$phone', '$email', '$address', $status)";
+                if (mysqli_query($conn, $seller_query)) {
+                    // Kayıt başarılı, login sayfasına yönlendir
+                    header("Location: login.php");
+                    exit();
+                } else {
+                    die("Satıcı kaydı sırasında hata oluştu: " . mysqli_error($conn));
+                }
+            } else {
+                die("Hata: Kullanıcı ID alınamadı.");
+            }
+        } else {
+            die("Kullanıcı kaydı sırasında hata oluştu: " . mysqli_error($conn));
         }
-    } else {
-        die("Hata: Kullanıcı ID alınamadı.");
-    }
-} else {
-    die("Kullanıcı kaydı sırasında hata oluştu: " . mysqli_error($conn));
-}
-
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
