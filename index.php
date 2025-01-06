@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
     
 </head>
 <body>
-    <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51); ">
+    <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(149, 13, 92); ">
         <div class="container-fluid">
            
             <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
@@ -441,8 +441,10 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <div class="container bg-light mt-5 ">
-  <div class="row px-5">
 
+
+
+  <div class="row px-5">
     <div class="col-6 ">
       <div class="a container bg-white " style="border-radius: 5%;">
         <div class="row mt-5 mb-5 ">
@@ -480,10 +482,10 @@ if (!isset($_SESSION['user_id'])) {
         <div class="a container bg-white mb-3" style="border-radius: 5%;">
           <div class="row mt-5 mb-5 ">
             <div class="col-6  text-center ">
-              <img src="images/31.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
+              <img src="images/gingercookie.jpeg" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
             </div>
             <div class="col-6 ">
-              <div class="baslik3 fw-bold " style="font-size: 21px;">Lobster Noodles</div>
+              <div class="baslik3 fw-bold " style="font-size: 21px;">Zencefilli Kurabiye</div>
               <div class="starts" style="color:rgb(244, 74, 51) ;">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
@@ -492,16 +494,16 @@ if (!isset($_SESSION['user_id'])) {
                 <i class="bi bi-star-fill"></i>
               </div>
               <div style="font-size: 15px;margin-top: 10px;">
-                There are many variations of passages look slightly believable.
+                Bursa usulü enfes kurabiye.
               </div>
               <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                $25.00
+                300.00 TL
               </div>
               <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                $50.00
+                200.00 TL
               </div>
               <div>
-                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
+                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete ekle</button>
               </div>
             </div>
           </div>
@@ -509,15 +511,16 @@ if (!isset($_SESSION['user_id'])) {
        </div>
     </div>
 
+
     <div class="row px-5">
       <div class="col-6 ">
         <div class="a container bg-white " style="border-radius: 5%;">
           <div class="row mt-5 mb-5">
             <div class="col-6  text-center ">
-              <img src="images/32.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
+              <img src="images/salca.jpg" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
             </div>
             <div class="col-6 ">
-              <div class="baslik3 fw-bold " style="font-size: 21px;">Hot Spicy Ramen</div>
+              <div class="baslik3 fw-bold " style="font-size: 21px;">Domates Salçası</div>
               <div class="starts" style="color:rgb(244, 74, 51) ;">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
@@ -526,16 +529,13 @@ if (!isset($_SESSION['user_id'])) {
                 <i class="bi bi-star-fill"></i>
               </div>
               <div style="font-size: 15px;margin-top: 10px;">
-                There are many variations of passages look slightly believable.
+                Bilecik yöresine özgü organik domates salçası
               </div>
               <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                $25.00
-              </div>
-              <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                $50.00
+                150.00 TL
               </div>
               <div>
-                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
+                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete ekle</button>
               </div>
             </div>
           </div>
@@ -547,10 +547,10 @@ if (!isset($_SESSION['user_id'])) {
           <div class="a container bg-white mb-3" style="border-radius: 5%;">
             <div class="row mt-5 mb-5">
               <div class="col-6  text-center ">
-                <img src="images/33.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
+                <img src="images/orgu.jpg" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
               </div>
               <div class="col-6 ">
-                <div class="baslik3 fw-bold " style="font-size: 21px;">Tasty White Dim-sum</div>
+                <div class="baslik3 fw-bold " style="font-size: 21px;">Örgü Bebek</div>
                 <div class="starts" style="color:rgb(244, 74, 51) ;">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -559,16 +559,16 @@ if (!isset($_SESSION['user_id'])) {
                   <i class="bi bi-star-fill"></i>
                 </div>
                 <div style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
+                  Amigurumi örgü tekniği ile yapılmış bebek
                 </div>
                 <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                  $25.00
+                 250.00 TL
                 </div>
                 <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                  $50.00
+                  220.00 TL
                 </div>
                 <div>
-                  <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
+                  <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete ekle</button>
                 </div>
               </div>
             </div>
@@ -609,6 +609,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
           </div>
           </div>
+
           <div class="col-6 bg-light ">
             <div class="a container bg-white mb-3" style="border-radius: 5%;">
               <div class="row mt-5 mb-5">
@@ -640,6 +641,8 @@ if (!isset($_SESSION['user_id'])) {
               </div>
             </div>
            </div>
+
+           
         </div>
   </div>
 </div>

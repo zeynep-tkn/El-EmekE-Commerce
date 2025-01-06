@@ -1,36 +1,29 @@
 <?php
-//sepete ürün ekleme sayfası
+// sepete ürün ekleme fonksiyonu
 session_start();
-include('../database.php');
+include('database.php');
 
-// Kullanıcının oturum açıp açmadığını kontrol et
-if (!isset($_SESSION['user_id'])) {
+// Müşteri kontrolü
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: login.php");
     exit();
 }
 
 $musteri_id = $_SESSION['user_id'];
-$urun_id = $_POST['urun_id'];
-$urun_adi = $_POST['urun_adi'];
-$urun_fiyati = $_POST['urun_fiyati'];
-$urun_gorseli = $_POST['urun_gorseli'];
+$urun_id = $_POST['urun_id'] ?? 0;
 
-// Sepette ürün var mı kontrol et
-$query = "SELECT * FROM Sepet WHERE Musteri_ID = '$musteri_id' AND Urun_ID = '$urun_id'";
-$result = mysqli_query($conn, $query);
+// Ürünün sepete eklenmesi
+if ($urun_id > 0) {
+    $query = "INSERT INTO Sepet (Musteri_ID, Urun_ID) VALUES (?, ?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ii", $musteri_id, $urun_id);
 
-if (mysqli_num_rows($result) > 0) {
-    // Ürün zaten sepette, miktarı artır
-    $query = "UPDATE Sepet SET Miktar = Miktar + 1 WHERE Musteri_ID = '$musteri_id' AND Urun_ID = '$urun_id'";
+    if ($stmt->execute()) {
+        header("Location: my_cart.php");
+    } else {
+        echo "Sepete eklerken bir hata oluştu.";
+    }
 } else {
-    // Ürün sepette yok, yeni ekle
-    $query = "INSERT INTO Sepet (Musteri_ID, Urun_ID, Miktar) VALUES ('$musteri_id', '$urun_id', 1)";
-}
-
-if (mysqli_query($conn, $query)) {
-    header("Location: my_cart.php");
-    exit();
-} else {
-    echo "Sepete eklenirken bir hata oluştu: " . mysqli_error($conn);
+    echo "Geçersiz ürün.";
 }
 ?>
