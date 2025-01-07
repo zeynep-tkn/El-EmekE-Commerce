@@ -88,7 +88,7 @@ $result = $conn->query($query);
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="php/seller_register.php">Satıcı oluştur</a>
-              <a class="dropdown-item" href="#">Shop Details</a>
+              <a class="dropdown-item" href="php/motivation.php">Girişimci Kadınlarımız</a>
               <a class="dropdown-item" href="#">Shop Details Coffee</a>
               <a class="dropdown-item" href="#">Cart</a>
               <a class="dropdown-item" href="#">Checkout</a>
@@ -134,11 +134,16 @@ $result = $conn->query($query);
         <!--SEARCH/FAVORİTES/CART-->
         <div style="margin-left: 0px;">
           <i class="bi bi-search text-white fs-5"></i>
+
+          <a href="php/favourite.php">
           <i class="bi bi-heart text-white fs-5" style="margin-left: 20px;"></i>
+          </a>
+
           <a href="php/my_cart.php">
             <i class="bi bi-cart3 text-white fs-5" style="margin-left: 20px;"></i>
           </a>
         </div>
+
         <div class="d-flex me-3 " href="#" style="margin-left: 145px;">
           <i class="bi bi-person-circle text-white fs-4"></i>
           <a href="php/login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
@@ -527,15 +532,12 @@ $result = $conn->query($query);
                   </div>
                 <?php endif; ?>
                 <div>
-                  <form action="php/add_to_cart.php" method="POST">
-                    <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
-                    <input type="hidden" name="boyut" value="1"> <!-- Varsayılan bir boyut -->
-                    <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
-                    <button type="submit" class="btn ms-2 text-white"
-                      style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete
-                      Ekle</button>
-                  </form>
-
+                <form action="php/add_to_cart.php" method="POST">
+    <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
+    <input type="hidden" name="boyut" value="1"> <!-- Varsayılan boyut -->
+    <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
+    <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
+     </form>
                 </div>
               </div>
             </div>

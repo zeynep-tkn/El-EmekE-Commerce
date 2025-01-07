@@ -1,9 +1,9 @@
 <?php
-//sepeti onaylayıp veri tabanına sipariş kaydet
+/*Sepeti onaylayıp veri tabanına sipariş kaydet
 session_start();
-include('database.php');
+include('../database.php');
 
-// Müşteri kontrolü
+// Kullanıcı kontrolü
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: login.php");
     exit();
@@ -11,15 +11,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
 
 $musteri_id = $_SESSION['user_id'];
 
-// Sepetteki ürünleri çek
-$query = "SELECT Sepet.Sepet_ID, Sepet.Miktar, Urun.Urun_ID, Urun.Urun_Fiyati, Urun.Satici_ID 
-          FROM Sepet 
-          JOIN Urun ON Sepet.Urun_ID = Urun.Urun_ID 
-          WHERE Sepet.Musteri_ID = ?";
+// Sepetteki ürünleri çekmek için doğru sorguyu yazalım
+$query = "SELECT m.Sepet_ID, m.Miktar, u.Urun_ID, u.Urun_Fiyati, u.Satici_ID 
+          FROM Sepet m
+          JOIN Urun u ON m.Urun_ID = u.Urun_ID 
+          WHERE m.Musteri_ID = ?";  // `Musteri_ID`'yi kullanarak doğru müşteri bilgilerini alıyoruz
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $musteri_id);
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Sepet boşsa kullanıcıyı uyarmak için kontrol
+if ($result->num_rows == 0) {
+    echo "Sepetiniz boş.";
+    exit();  // Çıkış yaparak sipariş işlemi durdurulur.
+}
 
 // Sipariş bilgilerini oluştur
 $siparis_tutari = 0;
@@ -36,7 +43,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// Sipariş ekleme işlemi
+// Eğer sipariş tutarı 0'dan büyükse, siparişi veritabanına kaydedelim
 if ($siparis_tutari > 0) {
     $siparis_tarihi = date('Y-m-d');
     $teslimat_adresi = "Varsayılan Teslimat Adresi"; // Burayı dinamik olarak düzenleyebilirsiniz
@@ -74,6 +81,7 @@ if ($siparis_tutari > 0) {
         echo "Sipariş kaydedilirken bir hata oluştu.";
     }
 } else {
-    echo "Sepetiniz boş.";
-}
+    echo "Sepetinizdeki ürünlerin toplam tutarı 0 olamaz. Sepetinizi kontrol edin.";
+}*/
 ?>
+
