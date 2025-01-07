@@ -1,7 +1,7 @@
 <?php
 //sepetim sayfası
 session_start();
-include('database.php');
+include("../database.php");
 
 // Müşteri kontrolü
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
