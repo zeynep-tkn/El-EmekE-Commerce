@@ -1,20 +1,90 @@
 <?php
-// satıcı panel sayfası
+// ürün yönetim sayfası
 session_start();
 include('../database.php');
+
+// Kullanıcı doğrulama
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: login.php");
     exit();
 }
 
-$seller_id = $_SESSION['user_id'];
-$query = "SELECT * FROM Urun WHERE Satici_ID = '$seller_id'";
-$result = mysqli_query($conn, $query);
+$seller_user_id = $_SESSION['user_id'];
 
-if (!$result) {
-    die("Sorgu başarısız: " . mysqli_error($conn));
+// Satıcı ID'sini al
+$query = "SELECT Satici_ID FROM Satici WHERE User_ID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $seller_user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    die("Satıcı kaydı bulunamadı. Lütfen bir satıcı hesabı oluşturun.");
 }
+
+$satici = $result->fetch_assoc();
+$satici_id = $satici['Satici_ID'];
+
+// Ürün ekleme işlemi
+$message = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $urun_adi = $_POST['product_name'] ?? '';
+    $urun_fiyati = $_POST['product_price'] ?? 0;
+    $stok_adedi = $_POST['product_stock'] ?? 0;
+    $urun_aciklama = $_POST['product_description'] ?? '';
+    $aktiflik_durumu = isset($_POST['product_status']) ? 1 : 0;
+
+    $urun_gorseli = null;
+    if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] === UPLOAD_ERR_OK) {
+        $file_tmp_path = $_FILES['product_image']['tmp_name'];
+        $file_name = uniqid() . "_" . $_FILES['product_image']['name'];
+        $upload_dir = "../uploads/";
+
+        if (move_uploaded_file($file_tmp_path, $upload_dir . $file_name)) {
+            $urun_gorseli = $file_name;
+        } else {
+            $message = "Dosya yüklenirken bir hata oluştu.";
+        }
+    }
+
+    if ($urun_adi && $urun_fiyati && $stok_adedi) {
+        $query = "INSERT INTO Urun (Urun_Adi, Urun_Fiyati, Stok_Adedi, Urun_Gorseli, Urun_Aciklamasi, Aktiflik_Durumu, Satici_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sdissii", $urun_adi, $urun_fiyati, $stok_adedi, $urun_gorseli, $urun_aciklama, $aktiflik_durumu, $satici_id);
+
+        if ($stmt->execute()) {
+            $message = "Ürün başarıyla eklendi.";
+        } else {
+            $message = "Ürün eklenirken bir hata oluştu: " . $conn->error;
+        }
+    } else {
+        $message = "Lütfen tüm alanları doldurun.";
+    }
+}
+
+// Ürün silme işlemi
+if (isset($_GET['delete'])) {
+    $product_id = intval($_GET['delete']);
+    $query = "DELETE FROM Urun WHERE Urun_ID = ? AND Satici_ID = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ii", $product_id, $satici_id);
+
+    if ($stmt->execute()) {
+        header("Location: manage_product.php");
+        exit();
+    } else {
+        $message = "Ürün silinirken bir hata oluştu.";
+    }
+}
+
+// Ürünleri listele
+$query = "SELECT * FROM Urun WHERE Satici_ID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $satici_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -118,6 +188,43 @@ if (!$result) {
     </div>
 
     <h2>Ürünler</h2>
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Ürün Adı</th>
+                    <th>Fiyat</th>
+                    <th>Stok</th>
+                    <th>Durum</th>
+                    <th>Görsel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($product = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($product['Urun_ID']) ?></td>
+                            <td><?= htmlspecialchars($product['Urun_Adi']) ?></td>
+                            <td><?= htmlspecialchars($product['Urun_Fiyati']) ?> TL</td>
+                            <td><?= htmlspecialchars($product['Stok_Adedi']) ?></td>
+                            <td><?= $product['Aktiflik_Durumu'] ? 'Aktif' : 'Pasif' ?></td>
+                            <td>
+                                <?php if ($product['Urun_Gorseli']): ?>
+                                    <img src="../uploads/<?= htmlspecialchars($product['Urun_Gorseli']) ?>" alt="Ürün Görseli" width="50">
+                                <?php else: ?>
+                                    Görsel Yok
+                                <?php endif; ?>
+                            </td>
+                           
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7">Henüz ürün eklenmedi.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

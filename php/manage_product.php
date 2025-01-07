@@ -203,7 +203,7 @@ $result = $stmt->get_result();
                     </a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                    <a id="navbarDropdown" class="nav-link" href="order_manage.php">
                         Sipariş Yönetimi
                     </a>
                 </li>
@@ -259,7 +259,7 @@ $result = $stmt->get_result();
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>id</th>
                     <th>Ürün Adı</th>
                     <th>Fiyat</th>
                     <th>Stok</th>
