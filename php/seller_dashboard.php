@@ -184,7 +184,7 @@ if (!$result) {
                     </a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">
+                    <a id="navbarDropdown" class="nav-link" href="order_manage.php">
                         Sipariş Yönetimi
                     </a>
                 </li>
