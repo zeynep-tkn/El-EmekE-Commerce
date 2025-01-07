@@ -527,15 +527,12 @@ $result = $conn->query($query);
                   </div>
                 <?php endif; ?>
                 <div>
-                  <form action="php/add_to_cart.php" method="POST">
-                    <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
-                    <input type="hidden" name="boyut" value="1"> <!-- Varsayılan bir boyut -->
-                    <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
-                    <button type="submit" class="btn ms-2 text-white"
-                      style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete
-                      Ekle</button>
-                  </form>
-
+                <form action="php/add_to_cart.php" method="POST">
+    <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
+    <input type="hidden" name="boyut" value="1"> <!-- Varsayılan boyut -->
+    <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
+    <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
+     </form>
                 </div>
               </div>
             </div>
