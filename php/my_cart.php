@@ -59,87 +59,112 @@ if (isset($_GET['delete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sepetim</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
 
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        .cart-table th, .cart-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+.cart-table th, .cart-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        .cart-table th {
-            background-color: #f8f8f8;
-        }
+.cart-table th {
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
 
-        .cart-table tr:hover {
-            background-color: #f1f1f1;
-        }
+.cart-table td {
+    font-size: 14px;
+}
 
-        .total-row {
-            background-color: #f8f8f8;
-            font-weight: bold;
-        }
+.cart-table tr:hover {
+    background-color: #f1f1f1;
+}
 
-        .total-row td {
-            border-top: 2px solid #ddd;
-        }
+.total-row {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
 
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
+.total-row td {
+    border-top: 2px solid #ddd;
+}
 
-        .action-buttons button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
 
-        .action-buttons button:hover {
-            background-color: #0056b3;
-        }
+.action-buttons a {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
 
-        .action-buttons .delete-button {
-            background-color: #dc3545;
-        }
+.action-buttons a:hover {
+    background-color: #0056b3;
+}
 
-        .action-buttons .delete-button:hover {
-            background-color: #c82333;
-        }
+.action-buttons .delete-button {
+    background-color: #dc3545;
+}
+
+.action-buttons .delete-button:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Sepetim</h1>
     <?php if ($result->num_rows > 0): ?>
-        <form action="checkout.php" method="POST">
+        <form action="order_success.php" method="POST">
             <table class="cart-table">
                 <thead>
                     <tr>
