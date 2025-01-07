@@ -1,11 +1,16 @@
 <?php 
 session_start();
+include('database.php');
+
 // ana sayfamız
 // Kullanıcının giriş yapıp yapmadığını kontrol et
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php"); // Giriş yapmamışsa, giriş sayfasına yönlendir
     exit();
 }
+// Aktif ürünleri veri tabanından çek
+$query = "SELECT * FROM Urun WHERE Aktiflik_Durumu = 1";
+$result = $conn->query($query);
 
 ?>
 
@@ -37,12 +42,17 @@ if (!isset($_SESSION['user_id'])) {
     
 </head>
 <body>
-    <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51); ">
+    <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(149, 13, 92); ">
         <div class="container-fluid">
            
             <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
                 <img src="images/chef.png" alt="Logo" width="35" height="35" class="align-text-top">
-                <div class="baslik fs-3"> ELEMEK</div>
+                
+                <div class="baslik fs-3"> 
+                <a class="dropdown-item" href="index.php">
+                  ELEMEK
+                </a>
+                </div>
             </a> 
              
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +63,7 @@ if (!isset($_SESSION['user_id'])) {
                 <ul class="navbar-nav  me-auto mb-2 mb-lg-0 " style="margin-left: 110px;">
                     <li class="nav-item dropdown ps-3">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Home
+                            Ana sayfa
                         </a>
                         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Pizza Palace</a>
@@ -90,10 +100,10 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
                     <li class="nav-item dropdown ps-3">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pages
+                            Siparişlerim
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">About</a>
+                            <a class="dropdown-item" href="php/customer_orders.php">Sipariş Detay</a>
                             <a class="dropdown-item" href="#">Chefs</a>
                             <a class="dropdown-item" href="#">Faq</a>
                             <a class="dropdown-item" href="#">Reservation</a>
@@ -102,7 +112,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
                     <li class="nav-item dropdown ps-3">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contact
+                            Hakkımızda
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Contact</a>
@@ -428,221 +438,64 @@ if (!isset($_SESSION['user_id'])) {
  </div>
  <!--CLOCK --> 
 
+
+
+
 <!--DISCOUNT MENU --> 
 <div class="container-fluid  mt-5">
   <div class="text-center">
     <div style="color:rgb(244, 74, 51)">
-      Discount Menu
+      Satışta Olan Ürünlerimiz
     </div>
     <div class="baslik3 " style="font-size: 50px;">
-      Today Discount Menu
+      Popüler Ürünler
     </div>
   </div>
 </div>
 
-<div class="container bg-light mt-5 ">
-  <div class="row px-5">
 
-    <div class="col-6 ">
-      <div class="a container bg-white " style="border-radius: 5%;">
-        <div class="row mt-5 mb-5 ">
-          <div class="col-6  text-center ">
-            <img src="images/sutreceli.jpeg" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-          </div>
-          <div class="col-6 ">
-            <div class="baslik3 fw-bold " style="font-size: 21px;">Süt Reçeli</div>
-            <div class="starts" style="color:rgb(244, 74, 51) ;">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-            <div style="font-size: 15px;margin-top: 10px;">
-              El yapımı sağlıklı süt reçeli
-            </div>
-            <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-              100.00 TL
-            </div>
-            <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-              150.00 TL
-            </div>
-            <div>
-              <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete ekle</button>
-            </div>
-          </div>
+<div class="container bg-light mt-5">
+        <div class="row px-5">
+            <?php while ($urun = $result->fetch_assoc()): ?>
+                <div class="col-6">
+                    <div class="a container bg-white mb-3" style="border-radius: 5%;">
+                        <div class="row mt-5 mb-5">
+                            <div class="col-6 text-center">
+                                <img src="uploads/<?= htmlspecialchars($urun['Urun_Gorseli']) ?>" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
+                            </div>
+                            <div class="col-6">
+                                <div class="baslik3 fw-bold" style="font-size: 21px;"><?= htmlspecialchars($urun['Urun_Adi']) ?></div>
+                                <div class="starts" style="color:rgb(244, 74, 51);">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <div style="font-size: 15px;margin-top: 10px;">
+                                    <?= htmlspecialchars($urun['Urun_Aciklamasi']) ?>
+                                </div>
+                                <div class="baslik3 fw-bold d-inline-block" style="font-size:30px;margin-top: 15px;">
+                                    <?= htmlspecialchars($urun['Urun_Fiyati']) ?> TL
+                                </div>
+                                <?php if (!empty($urun['Indirimli_Fiyat'])): ?>
+                                    <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
+                                        <?= htmlspecialchars($urun['Indirimli_Fiyat']) ?> TL
+                                    </div>
+                                <?php endif; ?>
+                                <div>
+                                    <form action="php/add_to_cart.php" method="POST">
+                                        <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
+                                        <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
         </div>
-      </div>
-      </div>
-
-
-      <div class="col-6 bg-light ">
-        <div class="a container bg-white mb-3" style="border-radius: 5%;">
-          <div class="row mt-5 mb-5 ">
-            <div class="col-6  text-center ">
-              <img src="images/31.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-            </div>
-            <div class="col-6 ">
-              <div class="baslik3 fw-bold " style="font-size: 21px;">Lobster Noodles</div>
-              <div class="starts" style="color:rgb(244, 74, 51) ;">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <div style="font-size: 15px;margin-top: 10px;">
-                There are many variations of passages look slightly believable.
-              </div>
-              <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                $25.00
-              </div>
-              <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                $50.00
-              </div>
-              <div>
-                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-       </div>
     </div>
-
-    <div class="row px-5">
-      <div class="col-6 ">
-        <div class="a container bg-white " style="border-radius: 5%;">
-          <div class="row mt-5 mb-5">
-            <div class="col-6  text-center ">
-              <img src="images/32.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-            </div>
-            <div class="col-6 ">
-              <div class="baslik3 fw-bold " style="font-size: 21px;">Hot Spicy Ramen</div>
-              <div class="starts" style="color:rgb(244, 74, 51) ;">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <div style="font-size: 15px;margin-top: 10px;">
-                There are many variations of passages look slightly believable.
-              </div>
-              <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                $25.00
-              </div>
-              <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                $50.00
-              </div>
-              <div>
-                <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-
-
-        <div class="col-6 bg-light ">
-          <div class="a container bg-white mb-3" style="border-radius: 5%;">
-            <div class="row mt-5 mb-5">
-              <div class="col-6  text-center ">
-                <img src="images/33.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-              </div>
-              <div class="col-6 ">
-                <div class="baslik3 fw-bold " style="font-size: 21px;">Tasty White Dim-sum</div>
-                <div class="starts" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                  $25.00
-                </div>
-                <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                  $50.00
-                </div>
-                <div>
-                  <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-      </div>
-
-
-      <div class="row px-5 ">
-        <div class="col-6">
-          <div class="a container bg-white " style="border-radius: 5%;">
-            <div class="row mt-5 mb-5">
-              <div class="col-6  text-center ">
-                <img src="images/34.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-              </div>
-              <div class="col-6 ">
-                <div class="baslik3 fw-bold " style="font-size: 21px;">Vegetable Egg Salad</div>
-                <div class="starts" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                  $25.00
-                </div>
-                <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                  $50.00
-                </div>
-                <div>
-                  <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          <div class="col-6 bg-light ">
-            <div class="a container bg-white mb-3" style="border-radius: 5%;">
-              <div class="row mt-5 mb-5">
-                <div class="col-6  text-center ">
-                  <img src="images/35.png" class="img-grow" style="border-radius:5%; height: 230px; width: 230px;">
-                </div>
-                <div class="col-6 ">
-                  <div class="baslik3 fw-bold " style="font-size: 21px;">Spicy Shrimp Corn Soup</div>
-                  <div class="starts" style="color:rgb(244, 74, 51) ;">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                  <div style="font-size: 15px;margin-top: 10px;">
-                    There are many variations of passages look slightly believable.
-                  </div>
-                  <div class="baslik3 fw-bold d-inline-block" style="font-size:30px ;margin-top: 15px;">
-                    $25.00
-                  </div>
-                  <div class="baslik3 fw-bold d-inline-block" style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                    $50.00
-                  </div>
-                  <div>
-                    <button type="button" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Order Now</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-           </div>
-        </div>
-  </div>
-</div>
 <!--DISCOUNT MENU --> 
 
 

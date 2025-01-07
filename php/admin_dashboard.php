@@ -42,15 +42,22 @@ $result = mysqli_query($conn, $query);
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
-         
-            <div class="baslik fs-3"> Admin</div>
-        </a>
+        
+    <div class="baslik fs-3"> 
+                <a class="dropdown-item" href="../index.php">
+                  ELEMEK
+                </a>
+                </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 110px;">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="admin_dashboard.php">
+                        Admin Paneli
+                    </a>
+                </li>
                 <li class="nav-item ps-3">
                     <a id="navbarDropdown" class="nav-link" href="admin_user.php">
                         Kullanıcı Yönetimi

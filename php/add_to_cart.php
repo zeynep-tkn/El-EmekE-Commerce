@@ -1,36 +1,63 @@
 <?php
-//sepete ürün ekleme sayfası
+// Sepete ürün ekleme fonksiyonu
 session_start();
 include('../database.php');
-
-// Kullanıcının oturum açıp açmadığını kontrol et
-if (!isset($_SESSION['user_id'])) {
+// Müşteri kontrolü: Kullanıcı giriş yapmış mı?
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: login.php");
     exit();
 }
 
-$musteri_id = $_SESSION['user_id'];
-$urun_id = $_POST['urun_id'];
-$urun_adi = $_POST['urun_adi'];
-$urun_fiyati = $_POST['urun_fiyati'];
-$urun_gorseli = $_POST['urun_gorseli'];
+// Müşteri kaydını kontrol et
+$query = "SELECT * FROM Musteri WHERE User_ID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $musteri_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Sepette ürün var mı kontrol et
-$query = "SELECT * FROM Sepet WHERE Musteri_ID = '$musteri_id' AND Urun_ID = '$urun_id'";
-$result = mysqli_query($conn, $query);
-
-if (mysqli_num_rows($result) > 0) {
-    // Ürün zaten sepette, miktarı artır
-    $query = "UPDATE Sepet SET Miktar = Miktar + 1 WHERE Musteri_ID = '$musteri_id' AND Urun_ID = '$urun_id'";
-} else {
-    // Ürün sepette yok, yeni ekle
-    $query = "INSERT INTO Sepet (Musteri_ID, Urun_ID, Miktar) VALUES ('$musteri_id', '$urun_id', 1)";
+// Müşteri kaydı yoksa, ekle
+if ($result->num_rows == 0) {
+    $query = "INSERT INTO Musteri (User_ID) VALUES (?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $musteri_id);
+    if (!$stmt->execute()) {
+        echo "Müşteri kaydı eklenirken bir hata oluştu.";
+        exit();
+    }
 }
 
-if (mysqli_query($conn, $query)) {
-    header("Location: my_cart.php");
-    exit();
+
+
+// Ürünün sepete eklenmesi
+if ($urun_id > 0) {
+    $eklenme_tarihi = date('Y-m-d');
+    
+    // Sepette aynı ürün var mı kontrol et
+    $query = "SELECT * FROM Sepet WHERE Musteri_ID = ? AND Urun_ID = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ii", $musteri_id, $urun_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        // Aynı ürün varsa miktarı güncelle
+        $query = "UPDATE Sepet SET Miktar = Miktar + ? WHERE Musteri_ID = ? AND Urun_ID = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iii", $miktar, $musteri_id, $urun_id);
+    } else {
+        // Yeni ürün ekle
+        $query = "INSERT INTO Sepet (Boyut, Miktar, Eklenme_Tarihi, Urun_ID, Musteri_ID) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iisii", $boyut, $miktar, $eklenme_tarihi, $urun_id, $musteri_id);
+    }
+
+    if ($stmt->execute()) {
+        header("Location: my_cart.php");  // Başarılı ekleme sonrası sepete yönlendir
+    } else {
+        echo "Sepete eklerken bir hata oluştu.";
+    }
 } else {
-    echo "Sepete eklenirken bir hata oluştu: " . mysqli_error($conn);
+    echo "Geçersiz ürün.";
 }
+
 ?>

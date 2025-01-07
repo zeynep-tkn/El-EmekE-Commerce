@@ -1,25 +1,25 @@
 <?php
+//sepetim sayfası
 session_start();
-include('../database.php');
+include('database.php');
 
-// Kullanıcının oturum açıp açmadığını kontrol et
-if (!isset($_SESSION['user_id'])) {
+// Müşteri kontrolü
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header("Location: login.php");
     exit();
 }
 
 $musteri_id = $_SESSION['user_id'];
-$query = "SELECT Urun.Urun_ID, Urun.Urun_Adi, Urun.Urun_Fiyati, Urun.Urun_Gorseli, Sepet.Miktar 
+
+// Sepetteki ürünleri çek
+$query = "SELECT Sepet.Sepet_ID, Sepet.Boyut, Sepet.Miktar, Sepet.Eklenme_Tarihi, Urun.Urun_Adi, Urun.Urun_Fiyati 
           FROM Sepet 
           JOIN Urun ON Sepet.Urun_ID = Urun.Urun_ID 
-          WHERE Sepet.Musteri_ID = '$musteri_id'";
-$result = mysqli_query($conn, $query);
-
-if (!$result) {
-    die("Sorgu başarısız: " . mysqli_error($conn));
-}
-
-$total = 0;
+          WHERE Sepet.Musteri_ID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $musteri_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $total = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart</title>
+    <title>Sepetim</title>
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -113,50 +113,45 @@ $total = 0;
 </head>
 
 <body>
-    <div class="container">
-        <h1>SEPETİM</h1>
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Ürün Görseli</th>
-                    <th>Ürün Adı</th>
-                    <th>Fiyatı</th>
-                    <th>Miktarı</th>
-                    <th>Toplam</th>
-                    <th>Durum</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($item = mysqli_fetch_assoc($result)) { 
-                    $subtotal = $item['Urun_Fiyati'] * $item['Miktar'];
-                    $total += $subtotal;
-                ?>
-                <tr>
-                    <td><img src="<?php echo $item['Urun_Gorseli']; ?>" alt="Product Image" class="product-image"></td>
-                    <td><?php echo $item['Urun_Adi']; ?></td>
-                    <td><?php echo $item['Urun_Fiyati']; ?> TL</td>
-                    <td><?php echo $item['Miktar']; ?></td>
-                    <td><?php echo $subtotal; ?> TL</td>
-                    <td class="action-buttons">
-                        <form action="update_cart.php" method="POST" style="display:inline;">
-                            <input type="hidden" name="urun_id" value="<?php echo $item['Urun_ID']; ?>">
-                            <input type="hidden" name="action" value="add">
-                            <button type="submit">+</button>
-                        </form>
-                        <form action="update_cart.php" method="POST" style="display:inline;">
-                            <input type="hidden" name="urun_id" value="<?php echo $item['Urun_ID']; ?>">
-                            <input type="hidden" name="action" value="remove">
-                            <button type="submit" class="delete-button">🗑️</button>
-                        </form>
-                    </td>
-                </tr>
-                <?php } ?>
-                <tr class="total-row">
-                    <td colspan="5"><strong>Total</strong></td>
-                    <td><strong><?php echo $total; ?> TL</strong></td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container">
+        <h1>Sepetim</h1>
+        <form action="checkout.php" method="POST">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Fiyat</th>
+                        <th>Boyut</th>
+                        <th>Miktar</th>
+                        <th>Toplam</th>
+                        <th>Eklenme Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $total = 0;
+                    while ($row = $result->fetch_assoc()): 
+                        $subtotal = $row['Urun_Fiyati'] * $row['Miktar'];
+                        $total += $subtotal;
+                    ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['Urun_Adi']) ?></td>
+                            <td><?= htmlspecialchars($row['Urun_Fiyati']) ?> TL</td>
+                            <td><?= htmlspecialchars($row['Boyut'] ?? '-') ?></td>
+                            <td><?= htmlspecialchars($row['Miktar']) ?></td>
+                            <td><?= $subtotal ?> TL</td>
+                            <td><?= htmlspecialchars($row['Eklenme_Tarihi']) ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                    <tr>
+                        <td colspan="4"><strong>Genel Toplam:</strong></td>
+                        <td><strong><?= $total ?> TL</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-success">Sepeti Onayla</button>
+        </form>
     </div>
 </body>
 </html>
