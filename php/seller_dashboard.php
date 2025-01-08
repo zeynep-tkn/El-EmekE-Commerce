@@ -1,20 +1,40 @@
 <?php
-// satıcı panel sayfası
+// Satıcı panel sayfası
 session_start();
 include('../database.php');
+
+// Kullanıcı giriş yapmış mı kontrol et
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     header("Location: login.php");
     exit();
 }
 
 $seller_id = $_SESSION['user_id'];
-$query = "SELECT * FROM Urun WHERE Satici_ID = '$seller_id'";
-$result = mysqli_query($conn, $query);
 
-if (!$result) {
+// Satıcının mağaza adı ve ad soyadını çekmek için sorgu
+$seller_info_query = "SELECT Magaza_Adi, Ad_Soyad FROM satici WHERE User_ID = '$seller_id'";
+$seller_info_result = mysqli_query($conn, $seller_info_query);
+
+if ($seller_info_result && mysqli_num_rows($seller_info_result) > 0) {
+    $seller_info = mysqli_fetch_assoc($seller_info_result);
+    $store_name = $seller_info['Magaza_Adi'];
+    $seller_name = $seller_info['Ad_Soyad'];
+} else {
+    // Eğer satıcı bilgisi bulunamazsa varsayılan değerler
+    $store_name = "Mağaza Adı Bulunamadı";
+    $seller_name = "Satıcı Adı Bulunamadı";
+}
+
+// Satıcının ürünlerini çekmek için sorgu
+$product_query = "SELECT * FROM Urun WHERE Satici_ID = '$seller_id'";
+$product_result = mysqli_query($conn, $product_query);
+
+if (!$product_result) {
     die("Sorgu başarısız: " . mysqli_error($conn));
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -204,8 +224,8 @@ if (!$result) {
         <div class="store-header">
             <img src="../images/magaza.png" class="store-image">
             <div class="store-info">
-                <h1 class="store-name">Mağaza Adı</h1>
-                <p class="seller-name">Satıcı Adı Soyadı</p>
+                <h1 class="store-name"><?php echo htmlspecialchars($store_name); ?></h1>
+                <p class="seller-name"><?php echo htmlspecialchars($seller_name); ?></p>
                 <button class="follow-button">Takip Et</button>
             </div>
             </div>
