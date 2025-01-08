@@ -35,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -62,7 +61,6 @@ body {
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 500px;
-            height: 400px;
             text-align: center;
         }
 
@@ -73,23 +71,24 @@ body {
             
         }
 
-        input[type="text"], input[type="email"], input[type="password"] {
+        input[type="text"], input[type="email"], input[type="password"], select {
             width: 80%;
             padding: 15px;
-            margin: 4px -15px;
+            margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size:15px;
+            font-size: 15px;
+            box-sizing: border-box;
         }
 
-        input[type="text"]{
-            margin-bottom: 5px;
-        }
-        input[type="email"]{
-            margin-top: 30px;
-        }
-        input[type="password"]{
-            margin-top: 30px;
+        select {
+            appearance: none;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%27http://www.w3.org/2000/svg%27 viewBox%3D%270 0 4 5%27%3E%3Cpath fill%3D%27%23444%27 d%3D%27M2 0L0 2h4zm0 5L0 3h4z%27/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px 10px;
+            padding-right: 30px;
         }
 
         button {
@@ -114,23 +113,18 @@ body {
     <h2>Kayıt Formu</h2>
 
     <form action="register.php" method="post">
-
        <input type="text" name="username" id="username" placeholder="Kullanıcı Adı" required><br><br>
        <input type="email" name="email" id="email" placeholder="E-posta" required>
        <input type="password" name="password" id="password" placeholder="Şifre" required>
-       <label for="role">Rol Seçin:</label>
-          <select id="role" name="role" required>
+       <select id="role" name="role" required>
+            <option value="" disabled selected>Rol Seçin</option>
             <option value="customer">Müşteri</option>
             <option value="seller">Satıcı</option>
             <option value="admin">Admin</option>
-          </select><br>
+       </select><br>
        <button type="submit">Kayıt Ol</button>
     </form>
 </div>
-
-
-</body>
-<html>
 
 <script>
   // E-posta alanına @gmail.com eklemek için
@@ -144,6 +138,6 @@ body {
             emailInput.value = parts[0] + "@gmail.com"; // @'den sonraki kısmı gmail.com olarak tamamla
         }
     });
-
-    
 </script>
+</body>
+</html>

@@ -21,7 +21,7 @@ $result = $conn->query($query);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELEMEK</title>
+  <title>EL EMEK</title>
   <!-- !BOOTSTRAP'S CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -55,7 +55,7 @@ $result = $conn->query($query);
 
         <div class="baslik fs-3">
           <a class="dropdown-item" href="index.php">
-            ELEMEK
+            EL EMEK
           </a>
         </div>
       </a>
@@ -339,91 +339,6 @@ $result = $conn->query($query);
 </div>
 <!--NEW RECIPES-->
 
-
- <!--ABOUT US-->
-<div class="container-fluid mt-5 bg-light">
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="d-flex" style="margin-left: 70px;">
-        <img src="images/dogalsabun.jpg" style="width: 400px; height: 450px; border-radius: 5%;">
-        <img src="images/pankek.png"
-          style="width: 260px; height: 300px; border-radius: 5%; margin-left: -180px; margin-top: 100px;">
-      </div>
-    </div>
-    <div class="col-12 col-md-6 px-5 mt-4">
-      <div class="text-start" style="color: rgb(244, 74, 51);">Hakkımızda</div>
-      <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Başarıya Giden Yolculuğumuz. Kadın Girişimcilerin Hikayesi</div>
-      <div class="text-start">Kadın girişimcilerimizin azmi ve yaratıcılığı ile dolu bir yolculuk. Her biri kendi alanında fark yaratan kadınların hikayeleri.</div>
-      <div class="row">
-        <div class="col-6 border-end" style="margin-top: 20px;">
-          <div class="mb-2">
-            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Sıcak ve Samimi Ortam
-          </div>
-          <div class="mb-4">
-            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
-          </div>
-          <!-- BUTTON -->
-          <div>
-            <button type="button" class="btn ms-2 text-white"
-              style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
-          </div>
-        </div>
-
-        <div class="col-6 d-flex align-items-center mb-5 mt-0">
-          <img src="images/zey.jpeg" alt="Ünlü Kadın"
-            style="border-radius: 50%; height: 70px; width: 70px; margin-left: 10px;">
-          <div class="ms-3">
-            <div>Zeynep Tekin</div>
-            <div style="color: rgb(105, 101, 101); font-weight: bold; font-size: 12px;">Kurucu & CEO</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!--ABOUT US-->
-<!--CLOCK-->
-<div class="container-fluid p-0 bg-dark mt-5" style="min-height: 200px; max-height: 50vh; height: auto;">
-  <div class="row">
-    <div class="baslik3 col-6 text-white p-5" style="font-weight:bold; font-size: 45px;">
-      Kadın Girişimcilerden %50'den Fazla İndirim
-      <div>
-        <button type="button" class="btn ms-2 text-white"
-          style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Hemen Al</button>
-      </div>
-    </div>
-    <div class="col-6 text-white p-5">
-      <div class="countdown">
-        <div>
-          <div id="day" style="display: none;">00</div>
-        </div>
-        <div class="border-danger p-5">
-          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="hour">00</div>
-          <div class="baslik3 fs-3 mt-3 ms-1">
-            Saat
-          </div>
-        </div>
-        <div class="border-danger p-5">
-          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="minute">00</div>
-          <div class="baslik3 fs-3 mt-3">
-            Dakika
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="second">00</div>
-          <div class="baslik3 fs-3 mt-3">
-            Saniye
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--CLOCK-->
-
-
-
   <!--DISCOUNT MENU -->
   <div class="container-fluid  mt-5">
     <div class="text-center">
@@ -484,6 +399,102 @@ $result = $conn->query($query);
     </div>
   </div>
   <!--DISCOUNT MENU -->
+
+
+
+
+
+
+
+
+ <!--ABOUT US-->
+<div class="container-fluid mt-5 bg-light">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="d-flex" style="margin-left: 70px;">
+        <img src="images/dogalsabun.jpg" style="width: 400px; height: 450px; border-radius: 5%;">
+        <img src="images/pankek.png"
+          style="width: 260px; height: 300px; border-radius: 5%; margin-left: -180px; margin-top: 100px;">
+      </div>
+    </div>
+    <div class="col-12 col-md-6 px-5 mt-4">
+      <div class="text-start" style="color: rgb(244, 74, 51);">Hakkımızda</div>
+      <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Başarıya Giden Yolculuğumuz. Kadın Girişimcilerin Hikayesi</div>
+      <div class="text-start">Kadın girişimcilerimizin azmi ve yaratıcılığı ile dolu bir yolculuk. Her biri kendi alanında fark yaratan kadınların hikayeleri.</div>
+      <div class="row">
+        <div class="col-6 border-end" style="margin-top: 20px;">
+          <div class="mb-2">
+            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Sıcak ve Samimi Ortam
+          </div>
+          <div class="mb-4">
+            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
+          </div>
+          <!-- BUTTON -->
+          <div>
+            <button type="button" class="btn ms-2 text-white"
+              style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
+          </div>
+        </div>
+
+        <div class="col-6 d-flex align-items-center mb-5 mt-0">
+          <img src="images/zey.jpeg" alt="Ünlü Kadın"
+            style="border-radius: 50%; height: 70px; width: 70px; margin-left: 10px;">
+          <div class="ms-3">
+            <div>Zeynep Tekin</div>
+            <div style="color: rgb(105, 101, 101); font-weight: bold; font-size: 12px;">Kurucu & CEO</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--ABOUT US-->
+
+
+
+
+
+<!--CLOCK-->
+<div class="container-fluid p-0 bg-dark mt-5" style="min-height: 200px; max-height: 50vh; height: auto;">
+  <div class="row">
+    <div class="baslik3 col-6 text-white p-5" style="font-weight:bold; font-size: 45px;">
+      Kadın Girişimcilerden %50'den Fazla İndirim
+      <div>
+        <button type="button" class="btn ms-2 text-white"
+          style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Hemen Al</button>
+      </div>
+    </div>
+    <div class="col-6 text-white p-5">
+      <div class="countdown">
+        <div>
+          <div id="day" style="display: none;">00</div>
+        </div>
+        <div class="border-danger p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="hour">00</div>
+          <div class="baslik3 fs-3 mt-3 ms-1">
+            Saat
+          </div>
+        </div>
+        <div class="border-danger p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="minute">00</div>
+          <div class="baslik3 fs-3 mt-3">
+            Dakika
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="second">00</div>
+          <div class="baslik3 fs-3 mt-3">
+            Saniye
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--CLOCK-->
+
+
 
 
 
@@ -649,46 +660,45 @@ $result = $conn->query($query);
 
  
 
-
-  <div class="container-fluid text-white p-0 mt-5" style="width: 100%;">
+<div class="container-fluid text-white p-0 mt-5" style="width: 100%;">
     <div class="row p-0 position-relative">
-      <img src="images/62.png" class="img-fluid w-100  position-absolute"
+      <img src="images/62.png" class="img-fluid w-100 position-absolute"
         style="top: 0; left: 0; z-index: -1; height: 100%;">
       <div class="container d-flex flex-column flex-lg-row text-white border-bottom border-white"
         style="z-index: 2; background-color: transparent; padding: 20px; margin-top: 20px; width: 90%;">
         <!-- BOTTOM BAR -->
         <div class="col-lg-3 mb-4">
-          <h4>Product</h4>
-          <p>Breakfast</p>
-          <p>Lunch</p>
-          <p>Desserts</p>
-          <p>Dinner</p>
-          <p>Book a table</p>
-          <p>Our Chefs</p>
+          <h4>Ürünler</h4>
+          <p>El Yapımı Takılar</p>
+          <p>Organik Kozmetik</p>
+          <p>Doğal Sabunlar</p>
+          <p>El Örgüsü Ürünler</p>
+          <p>Ev Yapımı Reçeller</p>
+          <p>El Yapımı Çantalar</p>
         </div>
         <div class="col-lg-3 mb-4">
-          <h4>Information</h4>
-          <p>FAQ</p>
+          <h4>Bilgi</h4>
+          <p>SSS</p>
           <p>Blog</p>
-          <p>Support</p>
+          <p>Destek</p>
         </div>
         <div class="col-lg-3 mb-4">
-          <h4>Company</h4>
-          <p>About us</p>
-          <p>Our Menu</p>
-          <p>Contact us</p>
-          <p>Epicurean</p>
+          <h4>Şirket</h4>
+          <p>Hakkımızda</p>
+          <p>Ürünlerimiz</p>
+          <p>İletişim</p>
+          <p>Başarı Hikayeleri</p>
         </div>
         <!-- ENTER YOUR EMAIL -->
-        <div class="col-lg-3 mb-4  ">
-          <div class="container rounded-4 text-center p-4  "
-            style="background-color: rgba(255, 255, 255, 0.2); height: 100%; width: 400px; ">
-            <img class="rounded-4 mb-3 " src="images/63.png" style="width: 100%; height: auto;">
+        <div class="col-lg-3 mb-4">
+          <div class="container rounded-4 text-center p-4"
+            style="background-color: rgba(255, 255, 255, 0.2); height: 100%; width: 400px;">
+            <img class="rounded-4 mb-3" src="images/63.png" style="width: 100%; height: auto;">
             <div class="d-flex justify-content-center">
-              <input type="email" class="rounded-3 border-0" placeholder="Enter your mail"
+              <input type="email" class="rounded-3 border-0" placeholder="E-posta adresinizi girin"
                 style="height: 50px; padding-left: 10px; width: 60%;">
               <button class="rounded-3 border-0 bg-danger text-white ml-2" type="button"
-                style="height: 50px; width: 35%;">Subscribe</button>
+                style="height: 50px; width: 35%;">Abone Ol</button>
             </div>
           </div>
         </div>
@@ -698,12 +708,12 @@ $result = $conn->query($query);
         style="z-index: 2; background-color: transparent; margin-top: 20px; padding: 20px; width: 90%;">
         <div class="d-flex align-items-center mb-3 mb-lg-0">
           <img src="images/chef.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
-          <div class="baslik ml-3" style="font-size: 40px;">epicuraen</div>
+          <div class="baslik ml-3" style="font-size: 40px;">El Emek</div>
         </div>
         <div class="d-flex flex-column flex-lg-row align-items-center mb-3 mb-lg-0">
-          <p class="mb-0">Terms</p>
-          <p class="mb-0 ml-lg-3">Privacy</p>
-          <p class="mb-0 ml-lg-3">Cookies</p>
+          <p class="mb-0">Şartlar</p>
+          <p class="mb-0 ml-lg-3">Gizlilik</p>
+          <p class="mb-0 ml-lg-3">Çerezler</p>
         </div>
         <div class="d-flex align-items-center">
           <i class="icon bi bi-facebook mr-3"></i>
@@ -713,6 +723,7 @@ $result = $conn->query($query);
       </div>
     </div>
   </div>
+
 
 
 
