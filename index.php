@@ -73,40 +73,16 @@ $result = $conn->query($query);
               Ana sayfa
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Pizza Palace</a>
-              <a class="dropdown-item" href="#">Coffee House</a>
-              <a class="dropdown-item" href="#">Gourmet Gateway</a>
-              <a class="dropdown-item" href="#">Flavor Fiesta</a>
-              <a class="dropdown-item" href="#">Epicurean Explorer</a>
-              <a class="dropdown-item" href="#">Epicurean Explorer Dark</a>
+              <a class="dropdown-item" href="#">Girişimci Sayısı</a>
+              <a class="dropdown-item" href="#">Yeni Ürünlerimiz</a>
+              <a class="dropdown-item" href="#">Kurucu & CEO</a>
+              <a class="dropdown-item" href="#">indirim Haberleri</a>
+              <a class="dropdown-item" href="#">Popüler Ürünler</a>
+              <a class="dropdown-item" href="#">Başarılı Satıcılar</a>
             </div>
           </li>
-          <li class="nav-item dropdown ps-3">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Satıcı
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="php/seller_register.php">Satıcı oluştur</a>
-              <a class="dropdown-item" href="php/motivation.php">Girişimci Kadınlarımız</a>
-              <a class="dropdown-item" href="#">Shop Details Coffee</a>
-              <a class="dropdown-item" href="#">Cart</a>
-              <a class="dropdown-item" href="#">Checkout</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown ps-3">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Blog
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Blog Grid One</a>
-              <a class="dropdown-item" href="#">Blog Grid Two</a>
-              <a class="dropdown-item" href="#">Blog Standard</a>
-              <a class="dropdown-item" href="#">Blog Deails</a>
 
-            </div>
-          </li>
+          
           <li class="nav-item dropdown ps-3">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -114,23 +90,56 @@ $result = $conn->query($query);
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="php/customer_orders.php">Sipariş Detay</a>
-              <a class="dropdown-item" href="#">Chefs</a>
-              <a class="dropdown-item" href="#">Faq</a>
-              <a class="dropdown-item" href="#">Reservation</a>
-              <a class="dropdown-item" href="#">Food Menu</a>
+              <a class="dropdown-item" href="#">Sipariş Listem</a>
+              <a class="dropdown-item" href="#">Geçmiş Siparişlerim</a>
             </div>
           </li>
+
+
+          <li class="nav-item dropdown ps-3">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Mağazalar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="php/seller_register.php">Satıcı oluştur</a>
+              <a class="dropdown-item" href="php/motivation.php">Girişimci Kadınlarımız</a>
+              <a class="dropdown-item" href="#">Kategoriler</a>
+              <a class="dropdown-item" href="#">Özellikler</a>
+              <a class="dropdown-item" href="#">Satıcı Profili</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown ps-3">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Yorumlar
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Yorum Yaz</a>
+              <a class="dropdown-item" href="#">Yorum Oku</a>
+              <a class="dropdown-item" href="#">Yorum Analizi</a>
+              <a class="dropdown-item" href="#">Favori Yoorumlar</a>
+
+            </div>
+          </li>
+
+
+
           <li class="nav-item dropdown ps-3">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Hakkımızda
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Contact</a>
-              <a class="dropdown-item" href="#">Contact With Map</a>
+              <a class="dropdown-item" href="#">Hakkımızda</a>
+              <a class="dropdown-item" href="#">Gizlilik</a>
             </div>
           </li>
+
+
         </ul>
+
         <!--SEARCH/FAVORİTES/CART-->
         <div style="margin-left: 0px;">
           <i class="bi bi-search text-white fs-5"></i>
@@ -169,16 +178,14 @@ $result = $conn->query($query);
   <div class="container-fluid ">
     <div class="row  position-relative">
       <div class="slideshow">
-        <img src="images/20.jpg" class="img-fluid w-100 responsive-img slide-img">
-        <img src="images/21.jpg" class="img-fluid w-100 responsive-img slide-img">
+        <img src="images/index.jpg" class="img-fluid w-100 responsive-img slide-img">
+        <img src="images/indexx.jpg" class="img-fluid w-100 responsive-img slide-img">
       </div>
       <div class="position-absolute top-50  start-50 translate-middle w-50" style="margin-top: -70px;">
         <div class="text-center">
-          <div class="text-center fw-bold mb-3" style="color: white; font-size: 1vw;">Feeling Hungry? Let's</div>
-          <div class="baslik2" style="color: white; font-size: 4vw;">Discover Divince Taste Of Epicurean</div>
-          <div><button class="mt-5 border-0 rounded-3 px-4 py-2 fw-bold text-white"
-              style="font-size: 13px; background-color: rgb(244, 74, 51); height: 40px; width: 130px;">BOOK
-              TABLE</button></div>
+          <div class="text-center fw-bold mb-3" style="color: black; font-size: 1vw;">Düşle, İnan , Başar</div>
+          <div class="baslik2" style="color: black; font-size: 4vw;">Kendi Ayakları Üzerinde Durabilen, Güçlü Kadınların Tercihi</div>
+          
         </div>
       </div>
     </div>
@@ -188,10 +195,24 @@ $result = $conn->query($query);
     <div class="container-fluid " style="padding: 0px; margin-top: 50px;">
       <div class="swiper tranding-slider">
         <div class="swiper-wrapper">
-          <!-- Slide-start -->
+          
+        <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/39.png" alt="Tranding">
+              <img src="images/salca.jpg" alt="Tranding">
+            </div>
+          </div>
+
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="images/orgu.jpg" alt="Tranding">
+            </div>
+
+          </div>
+
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="images/sutreceli.jpeg" alt="Tranding">
             </div>
 
           </div>
@@ -199,7 +220,26 @@ $result = $conn->query($query);
           <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/40.png" alt="Tranding">
+              <img src="images/gingercookie.jpeg" alt="Tranding">
+            </div>
+          </div>
+
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="images/salca.jpg" alt="Tranding">
+            </div>
+          </div>
+
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="images/orgu.jpg" alt="Tranding">
+            </div>
+
+          </div>
+
+          <div class="swiper-slide tranding-slide">
+            <div class="tranding-slide-img">
+              <img src="images/sutreceli.jpeg" alt="Tranding">
             </div>
 
           </div>
@@ -207,110 +247,13 @@ $result = $conn->query($query);
           <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/41.png" alt="Tranding">
+              <img src="images/gingercookie.jpeg" alt="Tranding">
             </div>
-
           </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/42.png" alt="Tranding">
-            </div>
 
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/39.png" alt="Tranding">
-            </div>
 
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/40.png" alt="Tranding">
-            </div>
 
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/41.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/42.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/39.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/40.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/41.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/42.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/39.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/40.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
-          <!-- Slide-start -->
-          <div class="swiper-slide tranding-slide">
-            <div class="tranding-slide-img">
-              <img src="images/41.png" alt="Tranding">
-            </div>
-
-          </div>
-          <!-- Slide-end -->
         </div>
-
-
 
       </div>
     </div>
@@ -322,168 +265,162 @@ $result = $conn->query($query);
 
 
   <div class="wrapper  ">
-    <div class="container border-end border-warning col-12  col-lg-3 text-center">
-      <div class="sayac d-flex" style="padding-left: 115px;">
-        <span class="num" data-value="15">00</span>
-        <span style="margin-top: 40px;">+</span>
-      </div>
-      <span class="text">Years Experience</span>
-    </div>
-    <div class="container border-end border-warning col-12  col-lg-3 text-center">
-      <div class="sayac d-flex" style="padding-left: 130px;">
-        <span class="num" data-value="5">00</span>
-        <span style="margin-top: 40px;">+</span>
-      </div>
-      <span class="text">Master Chefs</span>
-    </div>
-    <div class="container border-end border-warning col-12  col-lg-3 text-center">
-      <div class="sayac d-flex" style="padding-left: 100px;">
-        <span class="num" data-value="200">00</span>
-        <span style="margin-top: 40px;">+</span>
-      </div>
-      <span class="text">Daily Visitors</span>
-    </div>
-    <div class="container col-12  col-lg-3 text-center">
-      <div class="sayac d-flex" style="padding-left: 110px;">
-        <span class="num" data-value="35">00</span>
-        <span style="margin-top: 40px;">+</span>
-      </div>
-      <span class="text">Achievements</span>
-    </div>
+  <div class="container border-end border-warning col-12 col-lg-3 text-center">
+  <div class="sayac d-flex" style="padding-left: 115px;">
+    <span class="num" data-value="15">00</span>
+    <span style="margin-top: 40px;">+</span>
   </div>
-  <!--NEW RECİPES -->
-  <div class="container-fluid mt-5 bg-light py-5 ms-4">
-    <div class="row">
-      <div class="col-12 col-md-5 text-center py-5">
-        <div class="text-start" style="color: rgb(244, 74, 51);;">New Recipes</div>
-        <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Taste Our New Recipe</div>
-        <div class="text-start">There are many variations of passages of Lorem Ipsum form any injected humour, or
-          randomized words which don't look slightly believable.</div>
-      </div>
-      <div class="col-12 col-md-7 ">
-        <div class="swiper ilk">
-          <div class="swiper-wrapper mb-5 ">
-            <div class="k swiper-slide iki "><img class="img" src="images/3.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/2.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/15.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/17.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/18.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/15.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/2.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/3.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
-            <div class="k swiper-slide iki"><img class="img" src="images/17.jpeg">
-              <div class="text-overlay">Chocolate Cream Dessert</div>
-            </div>
+  <span class="text">Yıllık Deneyim</span>
+</div>
+<div class="container border-end border-warning col-12 col-lg-3 text-center">
+  <div class="sayac d-flex" style="padding-left: 130px;">
+    <span class="num" data-value="50">00</span>
+    <span style="margin-top: 40px;">+</span>
+  </div>
+  <span class="text">Kadın Girişimci</span>
+</div>
+<div class="container border-end border-warning col-12 col-lg-3 text-center">
+  <div class="sayac d-flex" style="padding-left: 100px;">
+    <span class="num" data-value="200">00</span>
+    <span style="margin-top: 40px;">+</span>
+  </div>
+  <span class="text">Günlük Ziyaretçi</span>
+</div>
+<div class="container col-12 col-lg-3 text-center">
+  <div class="sayac d-flex" style="padding-left: 110px;">
+    <span class="num" data-value="35">00</span>
+    <span style="margin-top: 40px;">+</span>
+  </div>
+  <span class="text">Başarılar</span>
+</div>
+  </div>
+  <!--NEW RECIPES-->
+<div class="container-fluid mt-5 bg-light py-5 ms-4">
+  <div class="row">
+    <div class="col-12 col-md-5 text-center py-5">
+      <div class="text-start" style="color: rgb(244, 74, 51);">Yeni Ürünler</div>
+      <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Yeni Ürünlerimizi Deneyin</div>
+      <div class="text-start">Kadın girişimcilerimizin el emeği göz nuru ürünleriyle tanışın. Her biri özenle hazırlanmış ve sizler için sunulmuştur.</div>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="swiper ilk">
+        <div class="swiper-wrapper mb-5">
+          <div class="k swiper-slide iki"><img class="img" src="images/taki.jpg">
+            <div class="text-overlay">El Yapımı Takılar</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/kozmetik.jpg">
+            <div class="text-overlay">Organik Kozmetik Ürünleri</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/dogalsabun.jpg">
+            <div class="text-overlay">Doğal Sabunlar</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/orgu.jpg">
+            <div class="text-overlay">El Örgüsü Ürünler</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/recel.jpg">
+            <div class="text-overlay">Ev Yapımı Reçeller</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/orgucanta.jpg">
+            <div class="text-overlay">El Yapımı Çantalar</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/bakim.jpg">
+            <div class="text-overlay">Doğal Cilt Bakım Ürünleri</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/dekormum.jpg">
+            <div class="text-overlay">El Yapımı Mumlar</div>
+          </div>
+          <div class="k swiper-slide iki"><img class="img" src="images/pankek.png">
+            <div class="text-overlay">Organik Gıda Ürünleri</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--NEW RECİPES -->
-  <!--ABOUT US -->
-  <div class="container-fluid mt-5 bg-light ">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="d-flex" style="margin-left: 70px;">
-          <img src="images/38.jpg" style="width: 400px; height: 450px; border-radius: 5%;">
-          <img src="images/37.png"
-            style="width: 260px; height: 300px; border-radius: 5%; margin-left: -180px; margin-top: 100px;">
-        </div>
-      </div>
-      <div class="col-12 col-md-6 px-5 mt-4">
-        <div class="text-start" style="color: rgb(244, 74, 51);;">About Us</div>
-        <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Our Journey to Sweet Success. A Tale
-          of Flour and Sugar</div>
-        <div class="text-start">Here are many variations of passages of Lorem Ipsum available but majority have suffered
-          alteration in some form from injected humour, or randomized words which don't looking even slightly
-          believable. If you are going have suffered alteration.</div>
-        <div class="row">
-          <div class="col-6 border-end" style="margin-top: 20px;">
-            <div class="mb-2 ">
-              <i class="bi bi-check-circle " style="color: rgb(244, 74, 51);"></i> Cozy Ambiance and Savor
-            </div>
-            <div class="mb-4 ">
-              <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Tasty Culinary For Food Lovers
-            </div>
-            <!-- BUTTON -->
-            <div>
-              <button type="button" class="btn ms-2 text-white"
-                style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Learn
-                More</button>
-            </div>
-          </div>
+</div>
+<!--NEW RECIPES-->
 
-          <div class="col-6 d-flex align-items-center mb-5 mt-0">
-            <img src="images/36.png" alt="Daniel Maestro"
-              style="border-radius: 50%; height: 70px; width: 70px; margin-left: 10px;">
-            <div class="ms-3">
-              <div>Daniel Maestro</div>
-              <div style="color: rgb(105, 101, 101); font-weight: bold; font-size: 12px;">Founder & CEO</div>
-            </div>
-          </div>
-        </div>
 
+ <!--ABOUT US-->
+<div class="container-fluid mt-5 bg-light">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="d-flex" style="margin-left: 70px;">
+        <img src="images/dogalsabun.jpg" style="width: 400px; height: 450px; border-radius: 5%;">
+        <img src="images/pankek.png"
+          style="width: 260px; height: 300px; border-radius: 5%; margin-left: -180px; margin-top: 100px;">
       </div>
     </div>
-  </div>
-  <!--ABOUT US -->
-  <!--CLOCK -->
-  <div class="container-fluid p-0 bg-dark mt-5" style="min-height: 200px; max-height: 50vh; height: auto;">
-    <div class="row">
-      <div class="baslik3 col-6 text-white p-5" style="font-weight:bold; font-size: 45px;">
-        We Offer You More Than 50% Discount in
-        <div>
-          <button type="button" class="btn ms-2 text-white"
-            style="background-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Get
-            Now</button>
-        </div>
-      </div>
-      <div class="col-6 text-white p-5">
-        <div class="countdown">
+    <div class="col-12 col-md-6 px-5 mt-4">
+      <div class="text-start" style="color: rgb(244, 74, 51);">Hakkımızda</div>
+      <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Başarıya Giden Yolculuğumuz. Kadın Girişimcilerin Hikayesi</div>
+      <div class="text-start">Kadın girişimcilerimizin azmi ve yaratıcılığı ile dolu bir yolculuk. Her biri kendi alanında fark yaratan kadınların hikayeleri.</div>
+      <div class="row">
+        <div class="col-6 border-end" style="margin-top: 20px;">
+          <div class="mb-2">
+            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Sıcak ve Samimi Ortam
+          </div>
+          <div class="mb-4">
+            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
+          </div>
+          <!-- BUTTON -->
           <div>
-            <div id="day" style="display: none;">00</div>
+            <button type="button" class="btn ms-2 text-white"
+              style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
           </div>
-          <div class=" border-danger  p-5">
-            <div class="border fixed-size" style="border-radius: 50%;padding: 20px; " id="hour">00</div>
-            <div class="baslik3 fs-3 mt-3 ms-1">
-              Hours
-            </div>
-          </div>
-          <div class=" border-danger p-5">
-            <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="minute">00</div>
-            <div class="baslik3 fs-3 mt-3 ">
-              Minutes
-            </div>
-          </div>
+        </div>
 
-          <div class=" p-5">
-            <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="second">00</div>
-            <div class="baslik3 fs-3 mt-3">
-              Seconds
-            </div>
+        <div class="col-6 d-flex align-items-center mb-5 mt-0">
+          <img src="images/zey.jpeg" alt="Ünlü Kadın"
+            style="border-radius: 50%; height: 70px; width: 70px; margin-left: 10px;">
+          <div class="ms-3">
+            <div>Zeynep Tekin</div>
+            <div style="color: rgb(105, 101, 101); font-weight: bold; font-size: 12px;">Kurucu & CEO</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--ABOUT US-->
+<!--CLOCK-->
+<div class="container-fluid p-0 bg-dark mt-5" style="min-height: 200px; max-height: 50vh; height: auto;">
+  <div class="row">
+    <div class="baslik3 col-6 text-white p-5" style="font-weight:bold; font-size: 45px;">
+      Kadın Girişimcilerden %50'den Fazla İndirim
+      <div>
+        <button type="button" class="btn ms-2 text-white"
+          style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Hemen Al</button>
+      </div>
+    </div>
+    <div class="col-6 text-white p-5">
+      <div class="countdown">
+        <div>
+          <div id="day" style="display: none;">00</div>
+        </div>
+        <div class="border-danger p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="hour">00</div>
+          <div class="baslik3 fs-3 mt-3 ms-1">
+            Saat
+          </div>
+        </div>
+        <div class="border-danger p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="minute">00</div>
+          <div class="baslik3 fs-3 mt-3">
+            Dakika
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="border fixed-size" style="border-radius: 50%;padding: 20px;" id="second">00</div>
+          <div class="baslik3 fs-3 mt-3">
+            Saniye
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--CLOCK -->
-
+</div>
+<!--CLOCK-->
 
 
 
@@ -554,10 +491,10 @@ $result = $conn->query($query);
   <div class="container-fluid  mt-5">
     <div class="text-center">
       <div style="color:rgb(244, 74, 51)">
-        Master Chefs
+        Emekçi Kadınlarımız
       </div>
       <div class="baslik3 " style="font-size: 50px;">
-        Our Professional Chefs
+        En Başarılı Satıcılar
       </div>
     </div>
   </div>
@@ -568,7 +505,7 @@ $result = $conn->query($query);
         <div class=" b bg-light rounded-4 bg-white " style=" height: 410px; width: 350px;">
           <img src="images/43.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
-            Vincent Sinclair
+            Kevser Semiz
           </div>
           <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
             Chief Master Chef
@@ -582,12 +519,12 @@ $result = $conn->query($query);
       </div>
       <div class="col-4 mt-4 ">
         <div class=" b bg-light rounded-4 bg-white" style=" height: 410px; width: 350px;">
-          <img src="images/44.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
+          <img src="images/zey.jpeg " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
-            Vincent Sinclair
+            Zeynep Nuriye Tekin
           </div>
           <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
-            Chief Master Chef
+            Yazılım Mühendisi
           </div>
           <div class="text-center mt-2 " style="color:rgb(244, 74, 51) ;">
             <i class="bi bi-facebook  mx-2"></i>
@@ -600,7 +537,7 @@ $result = $conn->query($query);
         <div class=" b bg-light rounded-4 bg-white" style=" height: 410px; width: 350px;">
           <img src="images/45.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
-            Vincent Sinclair
+            Fatma Hümeyra Gül
           </div>
           <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
             Chief Master Chef
@@ -619,703 +556,100 @@ $result = $conn->query($query);
   <!--VIEW MORE-->
   <div class="container text-center">
     <button type="button" class="btn ms-2 mt-5 mb-5 "
-      style="border-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;color: rgb(244, 74, 51);">View
-      More</button>
+      style="border-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;color: rgb(244, 74, 51);"> Daha fazla</button>
   </div>
   <!--VIEW MORE-->
 
 
-  <!--MENU BOOK-->
-  <div class="container-fluid  mt-5">
-    <div class="text-center">
-      <div style="color:rgb(244, 74, 51)">
-        Menu Book
-      </div>
-      <div class="baslik3 " style="font-size: 50px;">
-        Our Main Menu
-      </div>
+
+
+<!--TESTIMONIALS-->
+<div class="container p-0 mt-5">
+  <div class="text-center">
+    <div style="color:rgb(244, 74, 51)">
+      Yorumlar
+    </div>
+    <div class="baslik3" style="font-size: 50px;">
+      Ünlü Kadınlardan Yorumlar
     </div>
   </div>
-  <!--BREAKFAST-->
-  <div class="container">
-    <div class="row ">
-      <div class="col-3 bg-light ">
-        <div class="text-center mt-3 ">
-          <img src="images/46.png " class="img-c rounded-4" style=" height: 350px; width: 280px;">
-          <div class="baslik3" style="margin-top: -300px;color: white; font-size: 35px;">Break-fast</div>
+</div>
+
+<div class="swiper my">
+  <div class="x swiper-wrapper">
+    <div class="z swiper-slide">
+      <div class="text-center text-dark fw-normal fs-6">
+        <img src="images/58.png" alt="Ünlü Kadın"
+          style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
+        <div class="fs-6 px-5 mt-3">
+          Kadın girişimciler, yaratıcılığınız ve kararlılığınızla dünyayı değiştiriyorsunuz. Başarılarınızla gurur duyuyoruz.
+        </div>
+        <div class="baslik3 fw-bold fs-4 mt-4">
+          Amanda Morton
+        </div>
+        <div class="px-5 mt-1">
+          Head Manager, Slack
+        </div>
+        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
         </div>
       </div>
-      <div class=" col-9 bg-light ">
-        <div class="swiper ilk mt-3">
-          <div class="swiper-wrapper mb-2 ">
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/49.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px;">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Delicious Hot Pancakes</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/50.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Macaroni Meat Noodles
-                </div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/51.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Bread & Fried Egg</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/49.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Delicious Hot Pancakes</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/50.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Macaroni Meat Noodles</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/51.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Bread & Fried Egg</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/49.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Delicious Hot Pancakes</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div class="z swiper-slide">
+      <div class="text-center text-dark fw-normal fs-6">
+        <img src="images/58.png" alt="Ünlü Kadın"
+          style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
+        <div class="fs-6 px-5 mt-3">
+          Kendi işini kuran kadınlar, sizler ilham kaynağısınız. Azminiz ve çalışkanlığınızla geleceğe yön veriyorsunuz.
+        </div>
+        <div class="baslik3 fw-bold fs-4 mt-4">
+          Emily Johnson
+        </div>
+        <div class="px-5 mt-1">
+          CEO, Tech Innovators
+        </div>
+        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+      </div>
+    </div>
+    <div class="z swiper-slide">
+      <div class="text-center text-dark fw-normal fs-6">
+        <img src="images/58.png" alt="Ünlü Kadın"
+          style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
+        <div class="fs-6 px-5 mt-3">
+          Kadın girişimciler, cesaretiniz ve yenilikçi ruhunuzla gurur duyuyoruz. Sizler, geleceğin liderlerisiniz.
+        </div>
+        <div class="baslik3 fw-bold fs-4 mt-4">
+          Sarah Williams
+        </div>
+        <div class="px-5 mt-1">
+          Founder, Creative Minds
+        </div>
+        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
         </div>
       </div>
     </div>
   </div>
-  <!--BREAKFAST-->
+</div>
+<!--TESTIMONIALS-->
+
+ 
 
 
-  <!--LUNCH-->
-  <div class="container">
-    <div class="row ">
-      <div class="col-3 bg-light ">
-        <div class="text-center mt-3 ">
-          <img src="images/47.png " class="img-c rounded-4" style=" height: 350px; width: 280px;">
-          <div class="baslik3" style="margin-top: -300px;color: white; font-size: 35px;">Lunch</div>
-        </div>
-      </div>
-      <div class=" col-9 bg-light ">
-        <div class="swiper ilk mt-3">
-          <div class="swiper-wrapper mb-2 ">
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/53.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px;">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Gravy Meat Rice Bowl</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/54.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Chicken Thai Soup
-                </div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/52.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Hot Grilled Vegetables</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/53.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Gravy Meat Rice Bowl</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/54.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Chicken Thai Soup</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/52.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Hot Grilled Vegetables</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/53.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Gravy Meat Rice Bowl</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--LUNCH-->
-
-
-  <!--DINNER-->
-  <div class="container">
-    <div class="row ">
-      <div class="col-3 bg-light ">
-        <div class="text-center mt-3 ">
-          <img src="images/48.png " class="img-c rounded-4" style=" height: 350px; width: 280px;">
-          <div class="baslik3" style="margin-top: -300px;color: white; font-size: 35px;">Dinner</div>
-        </div>
-      </div>
-      <div class=" col-9 bg-light ">
-        <div class="swiper ilk mt-3">
-          <div class="swiper-wrapper mb-2 ">
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/55.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px;">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Supreme Cheesy Pizza</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class=" t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/56.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Lobster Vegetable fry
-                </div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/57.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Spicy Smoked Steak</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/55.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px; margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Supreme Cheesy Pizza</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/56.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Lobster Vegetable fry</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/57.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Spicy Smoked Steak</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="t swiper-slide ">
-              <div class="bg-light rounded-4 bg-white border-secondary border" style=" height: 350px; width: 280px;">
-                <img src="images/55.png " class="img rounded-top-4"
-                  style=" height: 160px; width: 280px;margin-left: 0px;margin-top: -1px">
-                <div class="baslik3 fw-bold mx-3 mt-2" style="font-size: 21px;">Supreme Cheesy Pizza</div>
-                <div class="mx-3" style="font-size: 8px;">Quantity (250 gm)</div>
-                <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="mx-3" style="font-size: 15px;margin-top: 10px;">
-                  There are many variations of passages look slightly believable.
-                </div>
-                <div class="baslik3 fw-bold d-inline-block mx-3" style="font-size:23px ;margin-top: 7px;">
-                  $10
-                  <i class="bi bi-plus-circle" style="color:rgb(244, 74, 51) ; margin-left:175px"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--DINNER-->
-  <!--MENU BOOK-->
-
-
-  <!--TESTIMONIALS-->
-  <div class="container p-0 mt-5">
-    <div class="text-center">
-      <div style="color:rgb(244, 74, 51)">
-        Testimonials
-      </div>
-      <div class="baslik3 " style="font-size: 50px;">
-        What Client Says
-      </div>
-    </div>
-  </div>
-
-  <div class="swiper my">
-    <div class="x swiper-wrapper">
-      <div class="z swiper-slide">
-        <div class="text-center text-dark fw-normal fs-6 ">
-          <img src="images/58.png" alt="Daniel Maestro"
-            style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
-          <div class="fs-6 px-5 mt-3">
-            Here are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in
-            some form from injected humour, or randomized words which don't looking even slightly believable. If you are
-            going have suffered
-          </div>
-          <div class="baslik3 fw-bold fs-4 mt-4">
-            Amanda Morton
-          </div>
-          <div class=" px-5 mt-1">
-            Head Manager, Slack
-          </div>
-          <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-          </div>
-        </div>
-      </div>
-      <div class="z swiper-slide">
-        <div class="text-center text-dark fw-normal fs-6 ">
-          <img src="images/58.png" alt="Daniel Maestro"
-            style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
-          <div class="fs-6 px-5 mt-3">
-            Here are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in
-            some form from injected humour, or randomized words which don't looking even slightly believable. If you are
-            going have suffered
-          </div>
-          <div class="baslik3 fw-bold fs-4 mt-4">
-            Amanda Morton
-          </div>
-          <div class=" px-5 mt-1">
-            Head Manager, Slack
-          </div>
-          <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-          </div>
-        </div>
-      </div>
-      <div class="z swiper-slide">
-        <div class="text-center text-dark fw-normal fs-6 ">
-          <img src="images/58.png" alt="Daniel Maestro"
-            style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
-          <div class="fs-6 px-5 mt-3">
-            Here are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in
-            some form from injected humour, or randomized words which don't looking even slightly believable. If you are
-            going have suffered
-          </div>
-          <div class="baslik3 fw-bold fs-4 mt-4">
-            Amanda Morton
-          </div>
-          <div class=" px-5 mt-1">
-            Head Manager, Slack
-          </div>
-          <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51) ;">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!--TESTIMONIALS-->
-
-  <!--LATEST BLOG-->
-  <div class="container p-0 mt-5">
-    <div class="text-center ">
-      <div style="color:rgb(244, 74, 51)">
-        Latest Blog
-      </div>
-      <div class="baslik3 " style="font-size: 50px;">
-        Our Latest News & Blog
-      </div>
-    </div>
-  </div>
-
-  <div class="container ">
-    <div class="row ">
-      <div class="col-4 ">
-        <img src="images/59.png" class="rounded-4" style="width: 400px; height: 450px;">
-        <div class="px-2 mt-3" style="color:rgb(244, 74, 51) ;font-size: 15px;">
-          MAINS
-        </div>
-        <div class="baslik3 px-2 fw-bold" style="font-size: 20px;">
-          Top Successful Recipes From Our New Experienced Chefs
-        </div>
-      </div>
-      <div class="col-4">
-        <img src="images/60.png" class="rounded-4" style="width: 400px;height: 450px; z-index: -1;">
-
-        <div class="px-2 mt-3" style="color:rgb(244, 74, 51) ;font-size: 15px;">
-          DRINKS
-        </div>
-        <div class="baslik3 px-2 fw-bold" style="font-size: 20px;">
-          Top Successful Recipes From Our New Experienced Chefs
-        </div>
-      </div>
-      <div class="col-4 ">
-        <img src="images/61.png" class="rounded-4" style="width: 400px;height: 450px;">
-        <div class="px-2 mt-3" style="color:rgb(244, 74, 51) ;font-size: 15px;">
-          SPICY
-        </div>
-        <div class="baslik3 px-2 fw-bold" style="font-size: 20px;">
-          Top Successful Recipes From Our New Experienced Chefs
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--LATEST BLOG-->
   <div class="container-fluid text-white p-0 mt-5" style="width: 100%;">
     <div class="row p-0 position-relative">
       <img src="images/62.png" class="img-fluid w-100  position-absolute"

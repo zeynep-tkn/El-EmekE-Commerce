@@ -9,25 +9,33 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
     exit();
 }
 
-$seller_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id']; // Kullanıcı ID'sini alıyoruz
 
-// Satıcının mağaza adı ve ad soyadını çekmek için sorgu
-$seller_info_query = "SELECT Magaza_Adi, Ad_Soyad FROM satici WHERE User_ID = '$seller_id'";
+// Satıcının Satici_ID ve mağaza adı, ad soyadını çekmek için sorgu
+$seller_info_query = "SELECT Satici_ID, Magaza_Adi, Ad_Soyad FROM satici WHERE User_ID = '$user_id'";
 $seller_info_result = mysqli_query($conn, $seller_info_query);
+
+// Debug satırı: Satıcı bilgilerini kontrol et
+//echo "Seller Info Query: " . $seller_info_query . "<br>";
 
 if ($seller_info_result && mysqli_num_rows($seller_info_result) > 0) {
     $seller_info = mysqli_fetch_assoc($seller_info_result);
+    $satici_id = $seller_info['Satici_ID'];  // Satici_ID'yi alıyoruz
     $store_name = $seller_info['Magaza_Adi'];
     $seller_name = $seller_info['Ad_Soyad'];
 } else {
     // Eğer satıcı bilgisi bulunamazsa varsayılan değerler
+    $satici_id = null; // Eğer satıcı yoksa null olarak ayarla
     $store_name = "Mağaza Adı Bulunamadı";
     $seller_name = "Satıcı Adı Bulunamadı";
 }
 
 // Satıcının ürünlerini çekmek için sorgu
-$product_query = "SELECT * FROM Urun WHERE Satici_ID = '$seller_id'";
+$product_query = "SELECT * FROM Urun WHERE Satici_ID = '$satici_id'";  // Burada Satici_ID kullanılıyor
 $product_result = mysqli_query($conn, $product_query);
+
+// Debug satırı: Ürün sorgusunu kontrol et
+//echo "Product Query: " . $product_query . "<br>";
 
 if (!$product_result) {
     die("Sorgu başarısız: " . mysqli_error($conn));
@@ -63,11 +71,13 @@ if (!$product_result) {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
 }
 
 .store-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     margin-right: 20px;
 }
@@ -78,12 +88,15 @@ if (!$product_result) {
 
 .store-name {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
 }
 
 .seller-name {
     margin: 5px 0;
     color: #777;
+    font-size: 16px;
 }
 
 .follow-button {
@@ -98,11 +111,12 @@ if (!$product_result) {
 .follow-button:hover {
     background-color: #ff3b2f;
 }
+
 .search-bar {
     display: flex;
     margin-bottom: 20px;
-    width: 30%; /* Bu değeri ekleyerek arama çubuğunun genişliğini ayarlayabilirsiniz */
-    margin-left: auto; /* Bu değeri ekleyerek arama çubuğunu ortalayabilirsiniz */
+    width: 40%;
+    margin-left: auto;
 }
 
 #search-input {
@@ -120,41 +134,52 @@ if (!$product_result) {
     border-radius: 0 5px 5px 0;
     cursor: pointer;
 }
+
 .search-bar button:hover {
     background-color: #ff3b2f;
 }
 
 .products {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+    margin-top: 20px;
 }
 
 .product {
     background-color: #fff;
-    padding: 5px; 
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Box-shadow değerini küçülttüm */
-    width: calc(30% - 60px); /* Genişliği biraz küçülttüm */
-    box-sizing: border-box;
-    margin: auto;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.product:hover {
+    transform: scale(1.05);
 }
 
 .product-image {
     width: 100%;
-    height: 40%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
 .product-name {
     font-size: 18px;
     margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
 }
 
 .product-price {
     color: #ff6f61;
     font-size: 16px;
+    font-weight: bold;
 }
-    </style>
 
+    </style>
+</head>
 
      <!-- !BOOTSTRAP'S CSS-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -220,82 +245,36 @@ if (!$product_result) {
 </nav>
 
 <div class="container mt-5">
-    <div class="container">
-        <div class="store-header">
-            <img src="../images/magaza.png" class="store-image">
-            <div class="store-info">
-                <h1 class="store-name"><?php echo htmlspecialchars($store_name); ?></h1>
-                <p class="seller-name"><?php echo htmlspecialchars($seller_name); ?></p>
-                <button class="follow-button">Takip Et</button>
-            </div>
-            </div>
-            <div class="search-bar">
-              <input type="text" id="search-input" placeholder="Ürün ara...">
-              <button onclick="searchProducts()">Ara</button>
-           </div>
-
-        <div class="products">
-            <!-- Ürünler buraya gelecek -->
-            <div class="product">
-                <img src="../images/59.png" alt="Ürün 1" class="product-image">
-                <p class="product-name">Ürün Adı 1</p>
-                <p class="product-price">₺100</p>
-            </div>
-            <div class="product">
-                <img src="../images/60.png" alt="Ürün 2" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/59.png" alt="Ürün 3" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/60.png" alt="Ürün 4" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/59.png" alt="Ürün 5" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/60.png" alt="Ürün 6" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/60.png" alt="Ürün 7" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/59.png" alt="Ürün 8" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <div class="product">
-                <img src="../images/60.png" alt="Ürün 9" class="product-image">
-                <p class="product-name">Ürün Adı 2</p>
-                <p class="product-price">₺200</p>
-            </div>
-            <!-- Daha fazla ürün ekleyebilirsiniz -->
+    <div class="store-header">
+        <img src="../images/magaza.png" class="store-image">
+        <div class="store-info">
+            <h1 class="store-name"><?php echo htmlspecialchars($store_name); ?></h1>
+            <p class="seller-name"><?php echo htmlspecialchars($seller_name); ?></p>
+            <button class="follow-button">Takip Et</button>
         </div>
     </div>
 
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Ürün ara...">
+        <button onclick="searchProducts()">Ara</button>
+    </div>
+
+    <!-- Ürünlerin görüntülenmesi -->
+    <div class="products">
+        <?php if (mysqli_num_rows($product_result) > 0): ?>
+            <?php while ($product = mysqli_fetch_assoc($product_result)): ?>
+                <div class="product">
+                    <img src="../uploads/<?php echo htmlspecialchars($product['Urun_Gorseli']); ?>" alt="<?php echo htmlspecialchars($product['Urun_Adi']); ?>" class="product-image">
+                    <p class="product-name"><?php echo htmlspecialchars($product['Urun_Adi']); ?></p>
+                    <p class="product-price">₺<?php echo htmlspecialchars($product['Urun_Fiyati']); ?></p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>Henüz eklenmiş ürün yok.</p>
+        <?php endif; ?>
+    </div>
 </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- !BOOTSTRAP'S jS-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- !BOOTSTRAP'S jS-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script>
         function searchProducts() {
     const input = document.getElementById('search-input').value.toLowerCase();

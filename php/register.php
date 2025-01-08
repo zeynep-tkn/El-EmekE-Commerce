@@ -46,8 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <style>
 body {
-    font-family: Arial, sans-serif;
-            background: url('background2.jpg') no-repeat center center fixed;
+            font-family: Arial, sans-serif;
+            background: url('../images/index.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,7 +57,7 @@ body {
         }
 
         .form-container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
