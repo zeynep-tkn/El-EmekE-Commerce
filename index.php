@@ -212,7 +212,7 @@ $result = $conn->query($query);
 
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/sutreceli.jpeg" alt="Tranding">
+              <img src="images/seramik.jpg" alt="Tranding">
             </div>
 
           </div>
@@ -220,13 +220,13 @@ $result = $conn->query($query);
           <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/gingercookie.jpeg" alt="Tranding">
+              <img src="images/kekik.jpg" alt="Tranding">
             </div>
           </div>
 
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/salca.jpg" alt="Tranding">
+              <img src="images/sarma.jpg" alt="Tranding">
             </div>
           </div>
 
@@ -239,7 +239,7 @@ $result = $conn->query($query);
 
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/sutreceli.jpeg" alt="Tranding">
+              <img src="images/manti.jpg" alt="Tranding">
             </div>
 
           </div>
@@ -247,7 +247,7 @@ $result = $conn->query($query);
           <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/gingercookie.jpeg" alt="Tranding">
+              <img src="images/kekik.jpg" alt="Tranding">
             </div>
           </div>
 
@@ -519,7 +519,7 @@ $result = $conn->query($query);
             Kevser Semiz
           </div>
           <div class="text-center" style="font-size: 13px; color:rgb(155, 10, 109) ;">
-            
+            Yazılım Mühendisi
           </div>
           <div class="text-center mt-2" style="color:rgb(155, 10, 109) ;">
             <i class="bi bi-facebook  mx-2"></i>
