@@ -57,9 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satıcı Kayıt</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: url('../images/index.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,15 +68,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0;
         }
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
         }
         h1 {
             text-align: center;
             color: #333;
+            margin-bottom: 20px;
         }
         label {
             display: block;
@@ -84,23 +88,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color:rgb(155, 10, 109) ;
             border: none;
             border-radius: 4px;
             color: #fff;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #218838;
+            background-color:rgb(155, 10, 109) ;
         }
     </style>
 </head>

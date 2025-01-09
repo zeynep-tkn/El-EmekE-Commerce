@@ -92,7 +92,7 @@ body {
         }
 
         button {
-            background-color: #4CAF50;
+            background-color:rgb(155, 10, 109) ;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -103,7 +103,7 @@ body {
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color:rgb(155, 10, 109) ;
         }
     </style>
 

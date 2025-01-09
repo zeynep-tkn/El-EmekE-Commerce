@@ -47,7 +47,7 @@ $result = $conn->query($query);
 </head>
 
 <body>
-  <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(149, 13, 92); ">
+  <nav class="navbar  navbar-expand-lg navbar-dark" style="background-color:rgb(155, 10, 109) ; ">
     <div class="container-fluid">
 
       <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
@@ -103,7 +103,7 @@ $result = $conn->query($query);
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="php/seller_register.php">Satıcı oluştur</a>
-              <a class="dropdown-item" href="php/motivation.php">Girişimci Kadınlarımız</a>
+              <a class="dropdown-item" href="php/motivation.php">CEO'dan Mesaj Var</a>
               <a class="dropdown-item" href="#">Kategoriler</a>
               <a class="dropdown-item" href="#">Özellikler</a>
               <a class="dropdown-item" href="#">Satıcı Profili</a>
@@ -298,7 +298,7 @@ $result = $conn->query($query);
 <div class="container-fluid mt-5 bg-light py-5 ms-4">
   <div class="row">
     <div class="col-12 col-md-5 text-center py-5">
-      <div class="text-start" style="color: rgb(244, 74, 51);">Yeni Ürünler</div>
+      <div class="text-start" style="color:rgb(155, 10, 109) ;">Yeni Ürünler</div>
       <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Yeni Ürünlerimizi Deneyin</div>
       <div class="text-start">Kadın girişimcilerimizin el emeği göz nuru ürünleriyle tanışın. Her biri özenle hazırlanmış ve sizler için sunulmuştur.</div>
     </div>
@@ -342,7 +342,7 @@ $result = $conn->query($query);
   <!--DISCOUNT MENU -->
   <div class="container-fluid  mt-5">
     <div class="text-center">
-      <div style="color:rgb(244, 74, 51)">
+      <div style="color:rgb(155, 10, 109) ;">
         Satışta Olan Ürünlerimiz
       </div>
       <div class="baslik3 " style="font-size: 50px;">
@@ -364,7 +364,7 @@ $result = $conn->query($query);
               </div>
               <div class="col-6">
                 <div class="baslik3 fw-bold" style="font-size: 21px;"><?= htmlspecialchars($urun['Urun_Adi']) ?></div>
-                <div class="starts" style="color:rgb(244, 74, 51);">
+                <div class="starts" style="color:rgb(155, 10, 109) ;">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -388,7 +388,7 @@ $result = $conn->query($query);
     <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
     <input type="hidden" name="boyut" value="1"> <!-- Varsayılan boyut -->
     <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
-    <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
+    <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
      </form>
                 </div>
               </div>
@@ -418,21 +418,21 @@ $result = $conn->query($query);
       </div>
     </div>
     <div class="col-12 col-md-6 px-5 mt-4">
-      <div class="text-start" style="color: rgb(244, 74, 51);">Hakkımızda</div>
+      <div class="text-start" style="color:rgb(155, 10, 109) ;">Hakkımızda</div>
       <div class="baslik3 text-start text-black fw-bold" style="font-size: 3vw;">Başarıya Giden Yolculuğumuz. Kadın Girişimcilerin Hikayesi</div>
       <div class="text-start">Kadın girişimcilerimizin azmi ve yaratıcılığı ile dolu bir yolculuk. Her biri kendi alanında fark yaratan kadınların hikayeleri.</div>
       <div class="row">
         <div class="col-6 border-end" style="margin-top: 20px;">
           <div class="mb-2">
-            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Sıcak ve Samimi Ortam
+            <i class="bi bi-check-circle" style="color:rgb(155, 10, 109) ;"></i> Sıcak ve Samimi Ortam
           </div>
           <div class="mb-4">
-            <i class="bi bi-check-circle" style="color: rgb(244, 74, 51);"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
+            <i class="bi bi-check-circle" style="color:rgb(155, 10, 109) ;"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
           </div>
           <!-- BUTTON -->
           <div>
             <button type="button" class="btn ms-2 text-white"
-              style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
+              style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
           </div>
         </div>
 
@@ -462,7 +462,7 @@ $result = $conn->query($query);
       Kadın Girişimcilerden %50'den Fazla İndirim
       <div>
         <button type="button" class="btn ms-2 text-white"
-          style="background-color:rgb(244, 74, 51);border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Hemen Al</button>
+          style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 0px;">Hemen Al</button>
       </div>
     </div>
     <div class="col-6 text-white p-5">
@@ -501,7 +501,7 @@ $result = $conn->query($query);
   <!--MASTER CHEFS-->
   <div class="container-fluid  mt-5">
     <div class="text-center">
-      <div style="color:rgb(244, 74, 51)">
+      <div style="color:rgb(155, 10, 109) ;">
         Emekçi Kadınlarımız
       </div>
       <div class="baslik3 " style="font-size: 50px;">
@@ -518,10 +518,10 @@ $result = $conn->query($query);
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
             Kevser Semiz
           </div>
-          <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
-            Chief Master Chef
+          <div class="text-center" style="font-size: 13px; color:rgb(155, 10, 109) ;">
+            
           </div>
-          <div class="text-center mt-2" style="color:rgb(244, 74, 51) ;">
+          <div class="text-center mt-2" style="color:rgb(155, 10, 109) ;">
             <i class="bi bi-facebook  mx-2"></i>
             <i class="bi bi-linkedin mx-2"></i>
             <i class="bi bi-instagram mx-2"></i>
@@ -534,10 +534,10 @@ $result = $conn->query($query);
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
             Zeynep Nuriye Tekin
           </div>
-          <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
+          <div class="text-center" style="font-size: 13px; color:rgb(155, 10, 109) ;">
             Yazılım Mühendisi
           </div>
-          <div class="text-center mt-2 " style="color:rgb(244, 74, 51) ;">
+          <div class="text-center mt-2 " style="color:rgb(155, 10, 109) ;">
             <i class="bi bi-facebook  mx-2"></i>
             <i class="bi bi-linkedin mx-2"></i>
             <i class="bi bi-instagram mx-2"></i>
@@ -550,10 +550,10 @@ $result = $conn->query($query);
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
             Fatma Hümeyra Gül
           </div>
-          <div class="text-center" style="font-size: 13px; color:rgb(244, 74, 51) ;">
-            Chief Master Chef
+          <div class="text-center" style="font-size: 13px; color:rgb(155, 10, 109) ;">
+            Yazılım Mühendisi
           </div>
-          <div class="text-center mt-2" style="color:rgb(244, 74, 51) ;">
+          <div class="text-center mt-2" style="color:rgb(155, 10, 109) ;">
             <i class="bi bi-facebook  mx-2"></i>
             <i class="bi bi-linkedin mx-2"></i>
             <i class="bi bi-instagram mx-2"></i>
@@ -567,7 +567,7 @@ $result = $conn->query($query);
   <!--VIEW MORE-->
   <div class="container text-center">
     <button type="button" class="btn ms-2 mt-5 mb-5 "
-      style="border-color:rgb(244, 74, 51) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;color: rgb(244, 74, 51);"> Daha fazla</button>
+      style="border-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;color:rgb(155, 10, 109) ;"> Daha fazla</button>
   </div>
   <!--VIEW MORE-->
 
@@ -577,7 +577,7 @@ $result = $conn->query($query);
 <!--TESTIMONIALS-->
 <div class="container p-0 mt-5">
   <div class="text-center">
-    <div style="color:rgb(244, 74, 51)">
+    <div style="color:rgb(155, 10, 109) ;">
       Yorumlar
     </div>
     <div class="baslik3" style="font-size: 50px;">
@@ -601,7 +601,7 @@ $result = $conn->query($query);
         <div class="px-5 mt-1">
           Head Manager, Slack
         </div>
-        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+        <div class="starts mx-3 mt-1" style="color:rgb(155, 10, 109) ;">
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
@@ -623,7 +623,7 @@ $result = $conn->query($query);
         <div class="px-5 mt-1">
           CEO, Tech Innovators
         </div>
-        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+        <div class="starts mx-3 mt-1" style="color:rgb(155, 10, 109) ;">
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
@@ -645,7 +645,7 @@ $result = $conn->query($query);
         <div class="px-5 mt-1">
           Founder, Creative Minds
         </div>
-        <div class="starts mx-3 mt-1" style="color:rgb(244, 74, 51);">
+        <div class="starts mx-3 mt-1" style="color:rgb(155, 10, 109) ;">
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>
           <i class="bi bi-star-fill"></i>

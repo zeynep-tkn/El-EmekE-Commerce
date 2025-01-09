@@ -60,13 +60,13 @@
 
 .favorite-price {
     font-size: 22px; /* Yazı boyutunu artırdım */
-    color: #ff6f61;
+    color:rgb(155, 10, 109) ;
     margin: 0 0 10px;
 }
 
 .remove-button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color:rgb(155, 10, 109) ;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -74,7 +74,7 @@
 }
 
 .remove-button:hover {
-    background-color: #ff3b2f;
+    background-color:rgb(155, 10, 109) ;
 }
     </style>
 </head>
