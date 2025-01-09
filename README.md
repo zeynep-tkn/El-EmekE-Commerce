@@ -83,6 +83,6 @@ Veritabanı yapısı hakkında detaylı bilgiye ulaşmak için [Veritabanı Şem
 
 ## Katkıda Bulunanlar
 - **Kevser Semiz** - Frontend geliştirme ve tasarım
-- **Zeynep Nuriye Tekin** - Veritabanı ve backend geliştirme.
+- **Zeynep Nuriye Tekin** - Veritabanı, frontend ve backend geliştirme.
 - **Fatma Hümeyra Gül** - Veritabanı Temel Yapısını kurma ve tasarım
 
