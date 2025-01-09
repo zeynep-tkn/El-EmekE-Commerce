@@ -60,13 +60,13 @@
 
 .favorite-price {
     font-size: 22px; /* Yazı boyutunu artırdım */
-    color: #ff6f61;
+    color:rgb(155, 10, 109) ;
     margin: 0 0 10px;
 }
 
 .remove-button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color:rgb(155, 10, 109) ;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -74,7 +74,7 @@
 }
 
 .remove-button:hover {
-    background-color: #ff3b2f;
+    background-color:rgb(155, 10, 109) ;
 }
     </style>
 </head>
@@ -83,7 +83,7 @@
         <h1 class="page-title">Favorilerim</h1>
         <div class="favorites">
             <div class="favorite-item">
-                <img src="../images/gingercookie.jpeg" alt="Ürün 1" class="favorite-image">
+                <img src="../images/recel.jpg" alt="Ürün 1" class="favorite-image">
                 <div class="favorite-info">
                     <h2 class="favorite-name">Ürün Adı 1</h2>
                     <p class="favorite-price">₺100</p>
@@ -92,6 +92,38 @@
             </div>
 
             <div class="favorite-item">
+                <img src="../images/sarma.jpg" alt="Ürün 2" class="favorite-image">
+                <div class="favorite-info">
+                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <p class="favorite-price">₺200</p>
+                    <button class="remove-button">Favorilerden Kaldır</button>
+                </div>
+            </div>
+            <div class="favorite-item">
+                <img src="../images/seramik.jpg" alt="Ürün 2" class="favorite-image">
+                <div class="favorite-info">
+                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <p class="favorite-price">₺200</p>
+                    <button class="remove-button">Favorilerden Kaldır</button>
+                </div>
+            </div>
+            <div class="favorite-item">
+                <img src="../images/borek.jpg" alt="Ürün 2" class="favorite-image">
+                <div class="favorite-info">
+                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <p class="favorite-price">₺200</p>
+                    <button class="remove-button">Favorilerden Kaldır</button>
+                </div>
+            </div>
+            <div class="favorite-item">
+                <img src="../images/kozmetik.jpg" alt="Ürün 2" class="favorite-image">
+                <div class="favorite-info">
+                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <p class="favorite-price">₺200</p>
+                    <button class="remove-button">Favorilerden Kaldır</button>
+                </div>
+            </div>
+            <div class="favorite-item">
                 <img src="../images/salca.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
                     <h2 class="favorite-name">Ürün Adı 2</h2>
@@ -116,39 +148,7 @@
                 </div>
             </div>
             <div class="favorite-item">
-                <img src="../images/gingercookie.jpeg" alt="Ürün 2" class="favorite-image">
-                <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
-                    <p class="favorite-price">₺200</p>
-                    <button class="remove-button">Favorilerden Kaldır</button>
-                </div>
-            </div>
-            <div class="favorite-item">
-                <img src="../images/salca.jpg" alt="Ürün 2" class="favorite-image">
-                <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
-                    <p class="favorite-price">₺200</p>
-                    <button class="remove-button">Favorilerden Kaldır</button>
-                </div>
-            </div>
-            <div class="favorite-item">
-                <img src="../images/sutreceli.jpeg" alt="Ürün 2" class="favorite-image">
-                <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
-                    <p class="favorite-price">₺200</p>
-                    <button class="remove-button">Favorilerden Kaldır</button>
-                </div>
-            </div>
-            <div class="favorite-item">
-                <img src="../images/orgu.jpg" alt="Ürün 2" class="favorite-image">
-                <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
-                    <p class="favorite-price">₺200</p>
-                    <button class="remove-button">Favorilerden Kaldır</button>
-                </div>
-            </div>
-            <div class="favorite-item">
-                <img src="../images/gingercookie.jpeg" alt="Ürün 2" class="favorite-image">
+                <img src="../images/orgucanta.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
                     <h2 class="favorite-name">Ürün Adı 2</h2>
                     <p class="favorite-price">₺200</p>

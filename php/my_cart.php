@@ -162,11 +162,11 @@ if (isset($_GET['delete'])) {
         }
 
         .action-buttons .delete-button {
-            background-color: #dc3545;
+            background-color:rgb(155, 10, 109) ;
         }
 
         .action-buttons .delete-button:hover {
-            background-color: #c82333;
+            background-color:rgb(155, 10, 109) ;
         }
 
         .btn-success {
@@ -189,7 +189,7 @@ if (isset($_GET['delete'])) {
         }
 
         .quantity-controls button {
-            background-color: #007bff;
+            background-color:rgb(0, 0, 0);
             color: white;
             border: none;
             padding: 5px 10px;
@@ -199,7 +199,7 @@ if (isset($_GET['delete'])) {
         }
 
         .quantity-controls button:hover {
-            background-color: #0056b3;
+            background-color:rgb(0, 0, 0);
         }
 
         .quantity-controls input {
@@ -213,7 +213,7 @@ if (isset($_GET['delete'])) {
 
 <body>
 
-<nav class="navbar  navbar-expand-lg navbar-dark" style="background-color: rgb(149, 13, 92); ">
+<nav class="navbar  navbar-expand-lg navbar-dark" style="background-color:rgb(155, 10, 109) ;">
     <div class="container-fluid">
 
       <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
