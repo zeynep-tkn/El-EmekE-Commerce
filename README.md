@@ -86,5 +86,3 @@ Veritabanı yapısı hakkında detaylı bilgiye ulaşmak için [Veritabanı Şem
 - **Zeynep Nuriye Tekin** - Veritabanı ve backend geliştirme.
 - **Fatma Hümeyra Gül** - Veritabanı Temel Yapısını kurma ve tasarım
 
-## Lisans
-Bu proje açık kaynaklıdır ve istediğiniz gibi kullanabilirsiniz. 😊
