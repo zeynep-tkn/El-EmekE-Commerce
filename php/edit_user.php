@@ -30,18 +30,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanıcı Düzenle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color:rgb(155, 10, 109) ;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color:rgb(155, 10, 109) ;
+        }
+    </style>
 </head>
 <body>
-    <h1>Kullanıcı Düzenle</h1>
+    
     <form action="edit_user.php?id=<?php echo $user['id']; ?>" method="POST">
-        <label for="username">Kullanıcı Adı:</label>
+    <h1>Kullanıcı Düzenle</h1>    
+    <label for="username">Kullanıcı Adı:</label>
         <input type="text" name="username" value="<?php echo $user['username']; ?>" required><br>
 
         <label for="email">E-posta:</label>

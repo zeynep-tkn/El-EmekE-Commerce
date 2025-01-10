@@ -60,40 +60,20 @@ $result = mysqli_query($conn, $query);
                         Kullanıcı Yönetimi
                     </a>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="#">
                         Ürün Yönetimi
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Shop</a>
-                        <a class="dropdown-item" href="#">Shop Details</a>
-                        <a class="dropdown-item" href="#">Shop Details Coffee</a>
-                        <a class="dropdown-item" href="#">Cart</a>
-                        <a class="dropdown-item" href="#">Checkout</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="#">
                         Satıcı Doğrulama
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Blog Grid One</a>
-                        <a class="dropdown-item" href="#">Blog Grid Two</a>
-                        <a class="dropdown-item" href="#">Blog Standard</a>
-                        <a class="dropdown-item" href="#">Blog Deails</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown ps-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item ps-3">
+                    <a id="navbarDropdown" class="nav-link" href="#">
                         Ürün Doğrulama
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">About</a>
-                        <a class="dropdown-item" href="#">Chefs</a>
-                        <a class="dropdown-item" href="#">Faq</a>
-                        <a class="dropdown-item" href="#">Reservation</a>
-                        <a class="dropdown-item" href="#">Food Menu</a>
-                    </div>
                 </li>
             </ul>
             <div class="d-flex me-3" href="#" style="margin-left: 145px;">
