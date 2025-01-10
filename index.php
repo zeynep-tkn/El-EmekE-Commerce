@@ -232,14 +232,14 @@ $result = $conn->query($query);
 
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/orgu.jpg" alt="Tranding">
+              <img src="images/kozmetik.jpg" alt="Tranding">
             </div>
 
           </div>
 
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/manti.jpg" alt="Tranding">
+              <img src="images/orgucanta.jpg" alt="Tranding">
             </div>
 
           </div>
@@ -247,7 +247,7 @@ $result = $conn->query($query);
           <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
-              <img src="images/kekik.jpg" alt="Tranding">
+              <img src="images/taki.jpg" alt="Tranding">
             </div>
           </div>
 
@@ -505,7 +505,7 @@ $result = $conn->query($query);
         Emekçi Kadınlarımız
       </div>
       <div class="baslik3 " style="font-size: 50px;">
-        En Başarılı Satıcılar
+        Yılın Girişimcileri
       </div>
     </div>
   </div>
@@ -514,7 +514,7 @@ $result = $conn->query($query);
     <div class="row bg-light px-5 ">
       <div class="col-4 mt-4 ">
         <div class=" b bg-light rounded-4 bg-white " style=" height: 410px; width: 350px;">
-          <img src="images/43.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
+          <img src="images/kevser.jpeg " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
             Kevser Semiz
           </div>
@@ -546,7 +546,7 @@ $result = $conn->query($query);
       </div>
       <div class="col-4 mt-4 mb-5">
         <div class=" b bg-light rounded-4 bg-white" style=" height: 410px; width: 350px;">
-          <img src="images/45.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
+          <img src="images/fatma.png " class="img-b rounded-top-4" style=" height: 300px; width: 350px;">
           <div class="baslik3 text-center fs-4 fw-bold mt-3">
             Fatma Hümeyra Gül
           </div>
