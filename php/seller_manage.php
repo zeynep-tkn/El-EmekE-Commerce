@@ -208,7 +208,7 @@ h2 {
                     <a id="navbarDropdown" class="nav-link" href="manage_product.php">Ürün Yönetimi</a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="seller_manage.php">Sipariş Yönetimi</a>
+                    <a id="navbarDropdown" class="nav-link" href="customer_orders.php">Sipariş Yönetimi</a>
                 </li>
             </ul>
             <div class="d-flex me-3" style="margin-left: 145px;">

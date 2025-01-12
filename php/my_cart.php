@@ -301,11 +301,11 @@ if (isset($_GET['delete'])) {
         <div style="margin-left: 0px;">
           <i class="bi bi-search text-white fs-5"></i>
 
-          <a href="php/favourite.php">
+          <a href="favourite.php">
           <i class="bi bi-heart text-white fs-5" style="margin-left: 20px;"></i>
           </a>
 
-          <a href="php/my_cart.php">
+          <a href="my_cart.php">
             <i class="bi bi-cart3 text-white fs-5" style="margin-left: 20px;"></i>
           </a>
         </div>
