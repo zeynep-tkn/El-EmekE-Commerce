@@ -2,11 +2,12 @@
 //admin panel sayfası
 session_start();
 include('../database.php');
-//rolü admin değilse logine geç
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
-    exit();
-}
+
+// Giriş yapmış kullanıcı bilgilerini kontrol et
+$logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
+
+
 
 $query = "SELECT * FROM users WHERE role='seller' OR role='customer'";
 $result = mysqli_query($conn, $query);
@@ -40,7 +41,7 @@ $result = mysqli_query($conn, $query);
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(34, 132, 17);">
     <div class="container-fluid">
         <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
             <div class="baslik fs-3"> Admin </div>
@@ -60,28 +61,33 @@ $result = mysqli_query($conn, $query);
                         Kullanıcı Yönetimi
                     </a>
                 </li>
+
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
-                        Ürün Yönetimi
-                    </a>
-                </li>
-                <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
+                    <a id="navbarDropdown" class="nav-link" href="seller_verification.php">
                         Satıcı Doğrulama
                     </a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
+                    <a id="navbarDropdown" class="nav-link" href="product_verification.php">
                         Ürün Doğrulama
                     </a>
                 </li>
             </ul>
-            <div class="d-flex me-3" href="#" style="margin-left: 145px;">
-                <i class="bi bi-person-circle text-white fs-4"></i>
-                <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
-                    Giriş Yap
-                </a>
-            </div>
+            <div class="d-flex me-3" style="margin-left: 145px;">
+    <i class="bi bi-person-circle text-white fs-4"></i>
+    <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
+        <a href="logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
+    <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
+        <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            Giriş Yap
+        </a>
+    <?php endif; ?>
+</div>
+
         </div>
     </div>
 </nav>

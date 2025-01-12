@@ -3,11 +3,10 @@
 session_start();
 include('../database.php');
 
-// Kullanıcı giriş yapmış mı kontrol et
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: login.php");
-    exit();
-}
+// Giriş yapmış kullanıcı bilgilerini kontrol et
+$logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
+
 
 $user_id = $_SESSION['user_id']; // Kullanıcı ID'sini alıyoruz
 
@@ -101,7 +100,7 @@ if (!$product_result) {
 
 .follow-button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color: rgb(91, 140, 213);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -109,7 +108,7 @@ if (!$product_result) {
 }
 
 .follow-button:hover {
-    background-color: #ff3b2f;
+    background-color: rgb(91, 140, 213);
 }
 
 .search-bar {
@@ -128,7 +127,7 @@ if (!$product_result) {
 
 .search-bar button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color: rgb(91, 140, 213);
     color: #fff;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -136,7 +135,7 @@ if (!$product_result) {
 }
 
 .search-bar button:hover {
-    background-color: #ff3b2f;
+    background-color: rgb(91, 140, 213);
 }
 
 .products {
@@ -173,7 +172,7 @@ if (!$product_result) {
 }
 
 .product-price {
-    color: #ff6f61;
+    color: rgb(91, 140, 213);
     font-size: 16px;
     font-weight: bold;
 }
@@ -200,14 +199,15 @@ if (!$product_result) {
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-</head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(91, 140, 213);">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
+        <a class="navbar-brand d-flex ms-4" href="../index.php" style="margin-left: 5px;">
          
             <div class="baslik fs-3"> ELEMEK</div>
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -229,24 +229,34 @@ if (!$product_result) {
                     </a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="order_manage.php">
+                    <a id="navbarDropdown" class="nav-link" href="customer_orders.php">
                         Sipariş Yönetimi
                     </a>
                 </li>
             </ul>
-            <div class="d-flex me-3" href="#" style="margin-left: 145px;">
-                <i class="bi bi-person-circle text-white fs-4"></i>
-                <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
-                    Giriş Yap
-                </a>
-            </div>
+
+            <div class="d-flex me-3" style="margin-left: 145px;">
+    <i class="bi bi-person-circle text-white fs-4"></i>
+    <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
+        <a href="logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
+    <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
+        <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            Giriş Yap
+        </a>
+    <?php endif; ?>
+</div>
+
         </div>
     </div>
 </nav>
 
 <div class="container mt-5">
     <div class="store-header">
-        <img src="../images/magaza.png" class="store-image">
+        <img src="../images/magazalogo.png" class="store-image">
         <div class="store-info">
             <h1 class="store-name"><?php echo htmlspecialchars($store_name); ?></h1>
             <p class="seller-name"><?php echo htmlspecialchars($seller_name); ?></p>
