@@ -3,11 +3,10 @@
 session_start();
 include('../database.php');
 
-// Kullanıcı doğrulama
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: login.php");
-    exit();
-}
+// Giriş yapmış kullanıcı bilgilerini kontrol et
+$logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
+
 
 $seller_user_id = $_SESSION['user_id'];
 
@@ -145,12 +144,21 @@ $result = $stmt->get_result();
                     </a>
                 </li>
             </ul>
-            <div class="d-flex me-3" href="#" style="margin-left: 145px;">
-                <i class="bi bi-person-circle text-white fs-4"></i>
-                <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
-                    Giriş Yap
-                </a>
-            </div>
+            <div class="d-flex me-3" style="margin-left: 145px;">
+    <i class="bi bi-person-circle text-white fs-4"></i>
+    <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
+        <a href="logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
+    <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
+        <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            Giriş Yap
+        </a>
+    <?php endif; ?>
+</div>
+
         </div>
     </div>
 </nav>
