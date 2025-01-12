@@ -41,7 +41,7 @@ $result = mysqli_query($conn, $query);
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(34, 132, 17);">
     <div class="container-fluid">
         <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
             <div class="baslik fs-3"> Admin </div>

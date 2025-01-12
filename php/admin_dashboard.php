@@ -41,14 +41,15 @@ $result = mysqli_query($conn, $query);
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(34, 132, 17);">
     <div class="container-fluid">
         
-    <div class="baslik fs-3"> 
-                <a class="dropdown-item" href="../index.php">
-                  ELEMEK
-                </a>
-                </div>
+    <a class="navbar-brand d-flex ms-4" href="../index.php" style="margin-left: 5px;">
+         
+            <div class="baslik fs-3"> ELEMEK</div>
+        </a>
+
+                
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

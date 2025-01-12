@@ -100,7 +100,7 @@ if (!$product_result) {
 
 .follow-button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color: rgb(91, 140, 213);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -108,7 +108,7 @@ if (!$product_result) {
 }
 
 .follow-button:hover {
-    background-color: #ff3b2f;
+    background-color: rgb(91, 140, 213);
 }
 
 .search-bar {
@@ -127,7 +127,7 @@ if (!$product_result) {
 
 .search-bar button {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color: rgb(91, 140, 213);
     color: #fff;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -135,7 +135,7 @@ if (!$product_result) {
 }
 
 .search-bar button:hover {
-    background-color: #ff3b2f;
+    background-color: rgb(91, 140, 213);
 }
 
 .products {
@@ -172,7 +172,7 @@ if (!$product_result) {
 }
 
 .product-price {
-    color: #ff6f61;
+    color: rgb(91, 140, 213);
     font-size: 16px;
     font-weight: bold;
 }
@@ -201,12 +201,13 @@ if (!$product_result) {
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(91, 140, 213);">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
+        <a class="navbar-brand d-flex ms-4" href="../index.php" style="margin-left: 5px;">
          
             <div class="baslik fs-3"> ELEMEK</div>
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -255,7 +256,7 @@ if (!$product_result) {
 
 <div class="container mt-5">
     <div class="store-header">
-        <img src="../images/magaza.png" class="store-image">
+        <img src="../images/magazalogo.png" class="store-image">
         <div class="store-info">
             <h1 class="store-name"><?php echo htmlspecialchars($store_name); ?></h1>
             <p class="seller-name"><?php echo htmlspecialchars($seller_name); ?></p>

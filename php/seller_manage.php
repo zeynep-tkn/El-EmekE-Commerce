@@ -112,7 +112,7 @@ $result = $stmt->get_result();
     
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(244, 74, 51);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(91, 140, 213);">
     <div class="container-fluid">
         <a class="navbar-brand d-flex ms-4" href="#" style="margin-left: 5px;">
          
