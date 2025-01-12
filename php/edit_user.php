@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         button {
             width: 100%;
             padding: 10px;
-            background-color:rgb(155, 10, 109) ;
+            background-color: rgb(34, 132, 17);
             border: none;
             border-radius: 4px;
             color: white;
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             cursor: pointer;
         }
         button:hover {
-            background-color:rgb(155, 10, 109) ;
+            background-color: rgb(34, 132, 17);
         }
     </style>
 </head>

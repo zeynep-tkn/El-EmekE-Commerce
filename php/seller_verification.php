@@ -1,4 +1,18 @@
+<?php
+//admin panel sayfası
+session_start();
+include('../database.php');
 
+// Giriş yapmış kullanıcı bilgilerini kontrol et
+$logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
+
+
+
+$query = "SELECT * FROM users WHERE role='seller' OR role='customer'";
+$result = mysqli_query($conn, $query);
+
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -178,7 +192,20 @@ body {
                 <button class="btn-reject">Reddet</button>
             </div>
         </div>
-
+        <div class="seller-card">
+            <div class="seller-info">
+                <img src="../images/magazalogo.png" alt="Satıcı Görseli">
+                <div>
+                    <h5>Manolya</h5>
+                    <p>Melissa Vargas</p>
+                    <p>Osmangazi, Bursa</p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn-approve">Onayla</button>
+                <button class="btn-reject">Reddet</button>
+            </div>
+        </div>
     </div>
 
 

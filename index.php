@@ -19,7 +19,7 @@ $result = $conn->query($query);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EL EMEK</title>
+  <title>Ana Sayfa</title>
   <!-- !BOOTSTRAP'S CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -337,7 +337,7 @@ $result = $conn->query($query);
           <div class="k swiper-slide iki"><img class="img" src="images/dekormum.jpg">
             <div class="text-overlay">El Yapımı Mumlar</div>
           </div>
-          <div class="k swiper-slide iki"><img class="img" src="images/pankek.png">
+          <div class="k swiper-slide iki"><img class="img" src="images/gingercookie.jpg">
             <div class="text-overlay">Organik Gıda Ürünleri</div>
           </div>
         </div>
@@ -421,7 +421,7 @@ $result = $conn->query($query);
     <div class="col-12 col-md-6">
       <div class="d-flex" style="margin-left: 70px;">
         <img src="images/dogalsabun.jpg" style="width: 400px; height: 450px; border-radius: 5%;">
-        <img src="images/pankek.png"
+        <img src="images/orgucanta.jpg"
           style="width: 260px; height: 300px; border-radius: 5%; margin-left: -180px; margin-top: 100px;">
       </div>
     </div>
