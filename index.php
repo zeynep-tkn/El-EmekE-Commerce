@@ -2,17 +2,15 @@
 session_start();
 include('database.php');
 
-// ana sayfamız
-// Kullanıcının giriş yapıp yapmadığını kontrol et
-if (!isset($_SESSION['user_id'])) {
-  header("Location: index.php"); // Giriş yapmamışsa, giriş sayfasına yönlendir
-  exit();
-}
+// Giriş yapmış kullanıcı bilgilerini kontrol et
+$logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
+
 // Aktif ürünleri veri tabanından çek
 $query = "SELECT * FROM Urun WHERE Aktiflik_Durumu = 1";
 $result = $conn->query($query);
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -153,12 +151,22 @@ $result = $conn->query($query);
           </a>
         </div>
 
-        <div class="d-flex me-3 " href="#" style="margin-left: 145px;">
-          <i class="bi bi-person-circle text-white fs-4"></i>
-          <a href="php/login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+        <div class="d-flex me-3" style="margin-left: 145px;">
+    <i class="bi bi-person-circle text-white fs-4"></i>
+    <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
+        <a href="php/logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
+    <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
+        <a href="php/login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
             Giriş Yap
-          </a>
-        </div>
+        </a>
+    <?php endif; ?>
+</div>
+
+
       </div>
     </div>
     </div>
