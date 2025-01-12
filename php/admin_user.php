@@ -61,18 +61,14 @@ $result = mysqli_query($conn, $query);
                         Kullanıcı Yönetimi
                     </a>
                 </li>
+
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
-                        Ürün Yönetimi
-                    </a>
-                </li>
-                <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
+                    <a id="navbarDropdown" class="nav-link" href="seller_verification.php">
                         Satıcı Doğrulama
                     </a>
                 </li>
                 <li class="nav-item ps-3">
-                    <a id="navbarDropdown" class="nav-link" href="#">
+                    <a id="navbarDropdown" class="nav-link" href="product_verification.php">
                         Ürün Doğrulama
                     </a>
                 </li>

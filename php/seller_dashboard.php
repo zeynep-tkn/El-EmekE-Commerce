@@ -199,7 +199,7 @@ if (!$product_result) {
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-</head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(91, 140, 213);">
     <div class="container-fluid">

@@ -85,7 +85,7 @@
             <div class="favorite-item">
                 <img src="../images/recel.jpg" alt="Ürün 1" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 1</h2>
+                    <h2 class="favorite-name">Vişne Reçeli</h2>
                     <p class="favorite-price">₺100</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -94,7 +94,7 @@
             <div class="favorite-item">
                 <img src="../images/sarma.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Yaprak Sarma</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -102,7 +102,7 @@
             <div class="favorite-item">
                 <img src="../images/seramik.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Seramik Kupa</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -110,7 +110,7 @@
             <div class="favorite-item">
                 <img src="../images/borek.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Börek</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -118,7 +118,7 @@
             <div class="favorite-item">
                 <img src="../images/kozmetik.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Kozmetik Ürün</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -126,7 +126,7 @@
             <div class="favorite-item">
                 <img src="../images/salca.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Domates Salçası</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -134,7 +134,7 @@
             <div class="favorite-item">
                 <img src="../images/sutreceli.jpeg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Süt Reçeli</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -142,7 +142,7 @@
             <div class="favorite-item">
                 <img src="../images/orgu.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Örgü Bebek</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>
@@ -150,7 +150,7 @@
             <div class="favorite-item">
                 <img src="../images/orgucanta.jpg" alt="Ürün 2" class="favorite-image">
                 <div class="favorite-info">
-                    <h2 class="favorite-name">Ürün Adı 2</h2>
+                    <h2 class="favorite-name">Örgü Çanta</h2>
                     <p class="favorite-price">₺200</p>
                     <button class="remove-button">Favorilerden Kaldır</button>
                 </div>

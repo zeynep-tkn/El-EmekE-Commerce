@@ -604,10 +604,10 @@ $result = $conn->query($query);
           Kadın girişimciler, yaratıcılığınız ve kararlılığınızla dünyayı değiştiriyorsunuz. Başarılarınızla gurur duyuyoruz.
         </div>
         <div class="baslik3 fw-bold fs-4 mt-4">
-          Amanda Morton
+          Ezgi Gerçek
         </div>
         <div class="px-5 mt-1">
-          Head Manager, Slack
+          Sosyal Medya Uzmanı
         </div>
         <div class="starts mx-3 mt-1" style="color:rgb(155, 10, 109) ;">
           <i class="bi bi-star-fill"></i>
@@ -620,13 +620,13 @@ $result = $conn->query($query);
     </div>
     <div class="z swiper-slide">
       <div class="text-center text-dark fw-normal fs-6">
-        <img src="images/58.png" alt="Ünlü Kadın"
+        <img src="images/yorum.jpg" alt="Ünlü Kadın"
           style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
         <div class="fs-6 px-5 mt-3">
           Kendi işini kuran kadınlar, sizler ilham kaynağısınız. Azminiz ve çalışkanlığınızla geleceğe yön veriyorsunuz.
         </div>
         <div class="baslik3 fw-bold fs-4 mt-4">
-          Emily Johnson
+          Ela Erdem
         </div>
         <div class="px-5 mt-1">
           CEO, Tech Innovators
@@ -642,16 +642,16 @@ $result = $conn->query($query);
     </div>
     <div class="z swiper-slide">
       <div class="text-center text-dark fw-normal fs-6">
-        <img src="images/58.png" alt="Ünlü Kadın"
+        <img src="images/yorum2.jpg" alt="Ünlü Kadın"
           style="border-radius: 50%; height: 100px; width: 100px; margin-left: 350px;margin-top: 30px;">
         <div class="fs-6 px-5 mt-3">
           Kadın girişimciler, cesaretiniz ve yenilikçi ruhunuzla gurur duyuyoruz. Sizler, geleceğin liderlerisiniz.
         </div>
         <div class="baslik3 fw-bold fs-4 mt-4">
-          Sarah Williams
+          Emel Yıldız
         </div>
         <div class="px-5 mt-1">
-          Founder, Creative Minds
+          Tasarım Uzmanı
         </div>
         <div class="starts mx-3 mt-1" style="color:rgb(155, 10, 109) ;">
           <i class="bi bi-star-fill"></i>
