@@ -86,3 +86,31 @@ Veritabanı yapısı hakkında detaylı bilgiye ulaşmak için [Veritabanı Şem
 - **Zeynep Nuriye Tekin** - Veritabanı, frontend ve backend geliştirme.
 - **Fatma Hümeyra Gül** - Veritabanı Temel Yapısını kurma ve tasarım
 
+## Ekran Görüntüleri
+
+### 1. Müşteri Paneli - Ana Sayfa
+![Admin Dashboard](images/anasayfa.png)
+
+### 2. Ana Sayfa- Ürünler
+![Seller Dashboard](images/populerurun.png)
+
+### 3. Favorilerim
+![Customer Dashboard](images/favorilerim.png)
+
+### 4. Sepetim
+![Product Management](images/sepetim.png)
+
+### 5. Satıcı Paneli - Mağaza
+![Order Management](images/magaza.png)
+
+### 5. Satıcı Paneli - Ürün Yönetimi
+![Order Management](images/satıcı.png)
+
+### 5. Satıcı Paneli - Ürün Ekle
+![Order Management](images/urunekle.png)
+
+### 5. Admin Paneli - Kullanıcı Yönetimi
+![Order Management](images/admin.png)
+
+### 5. Admin Paneli - Ürün Yönetimi
+![Order Management](images/adminUrunDoğrulama.png)
