@@ -1,8 +1,17 @@
 <?php
-//çıkış yap sayfam
-session_start();
-session_unset(); // Oturumdaki tüm değişkenleri temizler
-session_destroy(); // Oturumu sonlandırır
-header("Location: /El-Emek/index.php"); // Ana sayfaya yönlendir
-exit();
-?>
+// Logout page
+session_start(); // Start the session
+
+// Unset all session variables
+$_SESSION = array();
+
+// Destroy the session
+session_destroy();
+
+// Ensure session data is written and closed before redirection
+session_write_close();
+
+// Redirect to the homepage
+header("Location: /El-Emek/index.php");
+exit(); // Stop script execution after redirection
+

@@ -1,68 +1,88 @@
 <?php
 // login sayfası
-include('../database.php');
-$error = "";
-session_start();
+session_start(); // Oturumu başlat
+
+// Veritabanı bağlantısını dahil et
+// database.php dosyasının PDO bağlantısını kurduğunu varsayıyoruz
+include '../database.php'; // Parantezler kaldırıldı
+
+$error = ""; // Hata mesajlarını tutmak için değişken
 
 // Form gönderimi kontrolü
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Formdan gelen veriler
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = $_POST['password'];
+    // Gelen verileri al ve temizle
+    // trim: boşlukları temizler
+    // htmlspecialchars: HTML etiketlerini özel karakterlere dönüştürerek XSS saldırılarını önler
+    $email = trim(htmlspecialchars($_POST['email'] ?? ''));
+    $password = $_POST['password'] ?? ''; // Şifre hash'leneceği için htmlspecialchars kullanmıyoruz
 
-    // Veritabanında kullanıcıyı kontrol et
-    $query = "SELECT * FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $query);
-
-    // Kullanıcı bulunduysa
-    if ($result && mysqli_num_rows($result) > 0) {
-        $user = mysqli_fetch_assoc($result);
-
-        // Şifre doğrulaması
-        if (password_verify($password, $user['password'])) {
-            // Giriş başarılı, oturum bilgilerini başlat
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role']; // Kullanıcı rolünü oturuma ekle
-
-           // Rol tabanlı yönlendirme
-           switch ($user['role']) {
-            case 'admin':
-                header("Location: /El-Emek/php/admin_dashboard.php"); // Admin yönlendirme
-                break;
-            case 'seller':
-                header("Location: /El-Emek/php/seller_dashboard.php"); // Satıcı yönlendirme
-                break;
-            case 'customer':
-                header("Location: /El-Emek/index.php"); // Müşteri yönlendirme
-                break;
-            default:
-                header("Location: /El-Emek/index.php"); // Varsayılan yönlendirme
-                break;
-        }
-        exit();
+    // Sunucu tarafı validasyonları
+    if (empty($email) || empty($password)) {
+        $error = "E-posta ve şifre boş bırakılamaz.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Geçersiz e-posta formatı.";
     } else {
-        // Hatalı şifre
-        $error = "Hatalı şifre. Lütfen tekrar deneyin.";
+        try {
+            // Kullanıcıyı veritabanında hazır sorgu (prepared statement) ile kontrol et
+            // Bu, SQL enjeksiyonlarına karşı koruma sağlar
+            $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email); // Parametreyi bağla
+            $stmt->execute(); // Sorguyu çalıştır
+            $user = $stmt->fetch(PDO::FETCH_ASSOC); // Sonucu al
+
+            // Kullanıcı bulunduysa
+            if ($user) {
+                // Şifre doğrulaması
+                // password_verify: hash'lenmiş şifre ile girilen şifreyi güvenli bir şekilde karşılaştırır
+                if (password_verify($password, $user['password'])) {
+                    // Giriş başarılı, oturum bilgilerini başlat
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['role'] = $user['role']; // Kullanıcı rolünü oturuma ekle
+
+                    // Rol tabanlı yönlendirme
+                    switch ($user['role']) {
+                        case 'admin':
+                            header("Location: /El-Emek/php/admin_dashboard.php");
+                            break;
+                        case 'seller':
+                            header("Location: /El-Emek/php/seller_dashboard.php");
+                            break;
+                        case 'customer':
+                            header("Location: /El-Emek/index.php");
+                            break;
+                        default:
+                            header("Location: /El-Emek/index.php"); // Varsayılan yönlendirme
+                            break;
+                    }
+                    exit(); // Yönlendirmeden sonra betiğin çalışmasını durdur
+                } else {
+                    // Hatalı şifre
+                    $error = "Hatalı e-posta veya şifre. Lütfen tekrar deneyin.";
+                }
+            } else {
+                // Kullanıcı bulunamadı
+                $error = "Hatalı e-posta veya şifre. Lütfen tekrar deneyin.";
+            }
+        } catch (PDOException $e) {
+            // Veritabanı hatası durumunda kullanıcıya genel bir hata mesajı göster
+            // Gerçek hata mesajını loglamak daha güvenlidir (örn. error_log($e->getMessage());)
+            $error = "Giriş sırasında bir sorun oluştu. Lütfen daha sonra tekrar deneyin.";
+        }
     }
-} else {
-    // Kullanıcı bulunamadı
-    $error = "Hatalı e-posta veya şifre. Lütfen tekrar deneyin.";
-}
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş Yap</title>
 
-<style>
-body {
+    <style>
+        body {
             font-family: Arial, sans-serif;
             background: url('../images/index.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -87,20 +107,19 @@ body {
             margin-bottom: 20px;
             color: #333;
             font-size: 30px;
-            
         }
 
-        .error-message{
+        .error-message {
             background-color: #f8d7da;
             color: #721c24;
             padding: 10px;
-            border:1px solid #f5c6cb;
+            border: 1px solid #f5c6cb;
             border-radius: 5px;
             margin-bottom: 15px;
             position: relative;
         }
 
-        .close-btn{
+        .close-btn {
             position: absolute;
             right: 5px;
             top: 2px;
@@ -114,19 +133,18 @@ body {
             margin: 8px -15px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size:15px;
+            font-size: 15px;
         }
 
-        input[type="email"]{
+        input[type="email"] {
             margin-bottom: 20px;
         }
-        input[type="password"]{
+        input[type="password"] {
             margin-top: 30px;
         }
 
         button {
-            background-color:rgb(155, 10, 109) ;;
-            
+            background-color: rgb(155, 10, 109);
             color: white;
             padding: 10px 15px;
             border: none;
@@ -137,24 +155,23 @@ body {
         }
 
         button:hover {
-            background-color:rgb(155, 10, 109) ;
+            background-color: rgb(155, 10, 109);
         }
-
     </style>
 
 </head>
-  <body>
-  <div class="form-container">
+<body>
+    <div class="form-container">
         <h2>Giriş Yap</h2>
 
         <?php if (!empty($error)) : ?>
-        <div class="error-message">
-          <span class="close-btn">&times;</span>
-          <?php echo $error; ?>
-        </div>
-        
+            <div class="error-message">
+                <span class="close-btn">&times;</span>
+                <?php echo htmlspecialchars($error); ?>
+            </div>
         <?php endif; ?>
-        <form action="login.php" id="registerForm" method="post">
+
+        <form action="login.php" method="post" id="loginForm">
             <input type="email" id="email" name="email" placeholder="E-posta" required>
             <input type="password" id="password" name="password" placeholder="Şifre" required>
             <button type="submit">Giriş Yap</button>
@@ -163,64 +180,27 @@ body {
         <a href="register.php">Kayıt Ol</a>
     </div>
 
-<script>
-  
-    // E-posta alanına @gmail.com eklemek için
-    document.getElementById("email").addEventListener("input", function () {
-        const emailInput = this;
-        const gmailSuffix = "gmail.com";
+    <script>
+        // E-posta alanına @gmail.com eklemek için (isteğe bağlı, sunucu tarafı validasyon daha önemlidir)
+        document.getElementById("email").addEventListener("input", function () {
+            const emailInput = this;
+            const gmailSuffix = "gmail.com";
 
-        // Eğer kullanıcı @ işareti koyduysa ve henüz gmail.com eklenmemişse
-        if (emailInput.value.includes("@") && !emailInput.value.includes(gmailSuffix)) {
-            const parts = emailInput.value.split("@");
-            emailInput.value = parts[0] + "@gmail.com"; // @'den sonraki kısmı gmail.com olarak tamamla
-        }
-    });
+            // Eğer kullanıcı @ işareti koyduysa ve henüz gmail.com eklenmemişse
+            if (emailInput.value.includes("@") && !emailInput.value.includes(gmailSuffix)) {
+                const parts = emailInput.value.split("@");
+                // Kullanıcının girdiği kısmı koru, sadece sonuna gmail.com ekle
+                emailInput.value = parts[0] + "@" + gmailSuffix;
+            }
+        });
 
-
-       // Hata mesajını kapatmak için çarpı butonu
-       document.addEventListener("DOMContentLoaded", function () {
+        // Hata mesajını kapatmak için çarpı butonu
+        document.addEventListener("DOMContentLoaded", function () {
             var closeBtn = document.querySelector(".close-btn");
             if (closeBtn) {
                 closeBtn.addEventListener("click", function () {
                     this.parentElement.style.display = "none";
                 });
-            }
-        });
-
-        // Form gönderildiğinde bilgileri kontrol et ve localStorage'a kaydet
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Formun normal şekilde gönderilmesini engeller
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            // Örnek kontrol: Doğru bilgi girilmiş mi?
-            const correctEmail = "example@example.com"; // Bu kısımlar veritabanı kontrolü ile değiştirilebilir
-            const correctPassword = "12345";
-
-            if (email === correctEmail && password === correctPassword) {
-                // Bilgiler doğruysa localStorage'a kaydet ve yönlendir
-                localStorage.setItem("savedEmail", email);
-                localStorage.setItem("savedPassword", password);
-                alert("Başarıyla giriş yaptınız!");
-                window.location.href = "index.php"; // Ana sayfaya yönlendirme
-            } else {
-                // Bilgiler yanlışsa hata mesajını göster
-                document.querySelector(".error-message").style.display = "block";
-            }
-        });
-
-        // Sayfa yüklendiğinde bilgileri localStorage'dan al ve formu doldur
-        window.addEventListener("load", function () {
-            const savedEmail = localStorage.getItem("savedEmail");
-            const savedPassword = localStorage.getItem("savedPassword");
-
-            if (savedEmail) {
-                document.getElementById("email").value = savedEmail;
-            }
-
-            if (savedPassword) {
-                document.getElementById("password").value = savedPassword;
             }
         });
     </script>
