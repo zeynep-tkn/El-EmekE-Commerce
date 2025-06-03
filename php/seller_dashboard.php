@@ -1,64 +1,47 @@
 <?php
 // Satıcı panel sayfası
 session_start();
-include_once '../database.php'; // include_once kullanıldı
+include('../database.php');
 
 // Giriş yapmış kullanıcı bilgilerini kontrol et
 $logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
 $username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
 
-// Admin veya customer rolündeki kullanıcıların seller_dashboard'a erişimini engelle
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'seller') {
-    header("Location: login.php?status=unauthorized"); // Yetkisiz erişim durumunda yönlendir
-    exit();
-}
 
 $user_id = $_SESSION['user_id']; // Kullanıcı ID'sini alıyoruz
 
 // Satıcının Satici_ID ve mağaza adı, ad soyadını çekmek için sorgu
-try {
-    $seller_info_query = "SELECT Satici_ID, Magaza_Adi, Ad_Soyad FROM satici WHERE User_ID = :user_id";
-    $stmt_seller_info = $conn->prepare($seller_info_query);
-    $stmt_seller_info->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt_seller_info->execute();
-    $seller_info = $stmt_seller_info->fetch(PDO::FETCH_ASSOC);
+$seller_info_query = "SELECT Satici_ID, Magaza_Adi, Ad_Soyad FROM satici WHERE User_ID = '$user_id'";
+$seller_info_result = mysqli_query($conn, $seller_info_query);
 
-    if ($seller_info) {
-        $satici_id = $seller_info['Satici_ID'];  // Satici_ID'yi alıyoruz
-        $store_name = htmlspecialchars($seller_info['Magaza_Adi']);
-        $seller_name = htmlspecialchars($seller_info['Ad_Soyad']);
-    } else {
-        // Eğer satıcı bilgisi bulunamazsa varsayılan değerler
-        $satici_id = null; // Eğer satıcı yoksa null olarak ayarla
-        $store_name = "Mağaza Adı Bulunamadı";
-        $seller_name = "Satıcı Adı Bulunamadı";
-        error_log("seller_dashboard.php: Satıcı bilgisi bulunamadı User_ID: " . $user_id);
-    }
-} catch (PDOException $e) {
-    error_log("seller_dashboard.php: Satıcı bilgisi çekilirken veritabanı hatası: " . $e->getMessage());
-    $satici_id = null;
-    $store_name = "Hata Oluştu";
-    $seller_name = "Hata Oluştu";
+// Debug satırı: Satıcı bilgilerini kontrol et
+//echo "Seller Info Query: " . $seller_info_query . "<br>";
+
+if ($seller_info_result && mysqli_num_rows($seller_info_result) > 0) {
+    $seller_info = mysqli_fetch_assoc($seller_info_result);
+    $satici_id = $seller_info['Satici_ID'];  // Satici_ID'yi alıyoruz
+    $store_name = $seller_info['Magaza_Adi'];
+    $seller_name = $seller_info['Ad_Soyad'];
+} else {
+    // Eğer satıcı bilgisi bulunamazsa varsayılan değerler
+    $satici_id = null; // Eğer satıcı yoksa null olarak ayarla
+    $store_name = "Mağaza Adı Bulunamadı";
+    $seller_name = "Satıcı Adı Bulunamadı";
 }
 
 // Satıcının ürünlerini çekmek için sorgu
-$product_result = null;
-if ($satici_id !== null) {
-    try {
-        $product_query = "SELECT Urun_ID, Urun_Adi, Urun_Fiyati, Urun_Gorseli FROM Urun WHERE Satici_ID = :satici_id";
-        $stmt_product = $conn->prepare($product_query);
-        $stmt_product->bindParam(':satici_id', $satici_id, PDO::PARAM_INT);
-        $stmt_product->execute();
-        $product_result = $stmt_product->fetchAll(PDO::FETCH_ASSOC); // Tüm sonuçları al
-    } catch (PDOException $e) {
-        error_log("seller_dashboard.php: Ürünler çekilirken veritabanı hatası: " . $e->getMessage());
-        $product_result = []; // Hata durumunda boş dizi döndür
-    }
-} else {
-    $product_result = []; // Satıcı ID yoksa boş dizi döndür
-}
+$product_query = "SELECT * FROM Urun WHERE Satici_ID = '$satici_id'";  // Burada Satici_ID kullanılıyor
+$product_result = mysqli_query($conn, $product_query);
 
+// Debug satırı: Ürün sorgusunu kontrol et
+//echo "Product Query: " . $product_query . "<br>";
+
+if (!$product_result) {
+    die("Sorgu başarısız: " . mysqli_error($conn));
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -197,7 +180,9 @@ if ($satici_id !== null) {
     </style>
 </head>
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <!-- !BOOTSTRAP'S CSS-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- !BOOTSTRAP'S CSS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Montserrat:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
@@ -253,9 +238,12 @@ if ($satici_id !== null) {
             <div class="d-flex me-3" style="margin-left: 145px;">
     <i class="bi bi-person-circle text-white fs-4"></i>
     <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
         <a href="logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
-            <?php echo htmlspecialchars($_SESSION['username']); ?> </a>
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
     <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
         <a href="login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
             Giriş Yap
         </a>
@@ -281,15 +269,16 @@ if ($satici_id !== null) {
         <button onclick="searchProducts()">Ara</button>
     </div>
 
+    <!-- Ürünlerin görüntülenmesi -->
     <div class="products">
-        <?php if ($product_result && count($product_result) > 0): ?>
-            <?php foreach ($product_result as $product): ?>
+        <?php if (mysqli_num_rows($product_result) > 0): ?>
+            <?php while ($product = mysqli_fetch_assoc($product_result)): ?>
                 <div class="product">
                     <img src="../uploads/<?php echo htmlspecialchars($product['Urun_Gorseli']); ?>" alt="<?php echo htmlspecialchars($product['Urun_Adi']); ?>" class="product-image">
                     <p class="product-name"><?php echo htmlspecialchars($product['Urun_Adi']); ?></p>
                     <p class="product-price">₺<?php echo htmlspecialchars($product['Urun_Fiyati']); ?></p>
                 </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
         <?php else: ?>
             <p>Henüz eklenmiş ürün yok.</p>
         <?php endif; ?>

@@ -1,23 +1,17 @@
 <?php
 session_start();
-include_once 'database.php'; // include_once kullanıldı
+include('database.php');
 
 // Giriş yapmış kullanıcı bilgilerini kontrol et
 $logged_in = isset($_SESSION['user_id']); // Kullanıcı giriş yapmış mı kontrol et
-$username = $logged_in ? htmlspecialchars($_SESSION['username']) : null; // Kullanıcı adını al ve temizle
+$username = $logged_in ? $_SESSION['username'] : null; // Kullanıcı adını al
 
 // Aktif ürünleri veri tabanından çek
-$products = []; // Ürünleri tutacak dizi
-try {
-    $query = "SELECT Urun_ID, Urun_Adi, Urun_Fiyati, Stok_Adedi, Urun_Gorseli, Urun_Aciklamasi, Indirimli_Fiyat FROM Urun WHERE Aktiflik_Durumu = 1";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    error_log("index.php: Ürünler çekilirken veritabanı hatası: " . $e->getMessage());
-    // Hata durumunda ürün listesi boş kalır, kullanıcıya genel bir mesaj gösterilebilir.
-}
+$query = "SELECT * FROM Urun WHERE Aktiflik_Durumu = 1";
+$result = $conn->query($query);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +20,10 @@ try {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ana Sayfa</title>
+  <!-- !BOOTSTRAP'S CSS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- !BOOTSTRAP'S CSS-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -70,10 +66,10 @@ try {
       <div class="collapse navbar-collapse mt-1 bg-custom" id="navbarSupportedContent">
         <ul class="navbar-nav  me-auto mb-2 mb-lg-0 " style="margin-left: 110px;">
           <li class="nav-item dropdown ps-3">
-            <button id="navbarDropdown" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Ana sayfa
-            </button>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Girişimci Sayısı</a>
               <a class="dropdown-item" href="#">Yeni Ürünlerimiz</a>
@@ -86,10 +82,10 @@ try {
 
           
           <li class="nav-item dropdown ps-3">
-            <button id="navbarDropdown" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Siparişlerim
-            </button>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="php/customer_orders.php">Sipariş Detay</a>
               <a class="dropdown-item" href="#">Sipariş Listem</a>
@@ -99,10 +95,10 @@ try {
 
 
           <li class="nav-item dropdown ps-3">
-            <button id="navbarDropdown" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Mağazalar
-            </button>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="php/seller_register.php">Satıcı oluştur</a>
               <a class="dropdown-item" href="php/motivation.php">CEO'dan Mesaj Var</a>
@@ -113,10 +109,10 @@ try {
           </li>
 
           <li class="nav-item dropdown ps-3">
-            <button id="navbarDropdown" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Yorumlar
-            </button>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Yorum Yaz</a>
               <a class="dropdown-item" href="#">Yorum Oku</a>
@@ -129,10 +125,10 @@ try {
 
 
           <li class="nav-item dropdown ps-3">
-            <button id="navbarDropdown" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Hakkımızda
-            </button>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Hakkımızda</a>
               <a class="dropdown-item" href="#">Gizlilik</a>
@@ -142,6 +138,7 @@ try {
 
         </ul>
 
+        <!--SEARCH/FAVORİTES/CART-->
         <div style="margin-left: 0px;">
           <i class="bi bi-search text-white fs-5"></i>
 
@@ -157,9 +154,12 @@ try {
         <div class="d-flex me-3" style="margin-left: 145px;">
     <i class="bi bi-person-circle text-white fs-4"></i>
     <?php if (isset($_SESSION['username'])): ?>
+        <!-- Kullanıcı giriş yaptıysa -->
         <a href="php/logout.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
-            <?php echo htmlspecialchars($_SESSION['username']); ?> </a>
+            <?php echo htmlspecialchars($_SESSION['username']); ?> <!-- Kullanıcı adı gösteriliyor -->
+        </a>
     <?php else: ?>
+        <!-- Kullanıcı giriş yapmamışsa -->
         <a href="php/login.php" class="text-white mt-2 ms-2" style="font-size: 15px; text-decoration: none;">
             Giriş Yap
         </a>
@@ -204,7 +204,8 @@ try {
       <div class="swiper tranding-slider">
         <div class="swiper-wrapper">
           
-        <div class="swiper-slide tranding-slide">
+        <!-- Slide-start -->
+          <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
               <img src="images/salca.jpg" alt="Tranding">
             </div>
@@ -223,6 +224,8 @@ try {
             </div>
 
           </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
               <img src="images/kekik.jpg" alt="Tranding">
@@ -248,6 +251,8 @@ try {
             </div>
 
           </div>
+          <!-- Slide-end -->
+          <!-- Slide-start -->
           <div class="swiper-slide tranding-slide">
             <div class="tranding-slide-img">
               <img src="images/taki.jpg" alt="Tranding">
@@ -297,7 +302,8 @@ try {
   <span class="text">Başarılar</span>
 </div>
   </div>
-  <div class="container-fluid mt-5 bg-light py-5 ms-4">
+  <!--NEW RECIPES-->
+<div class="container-fluid mt-5 bg-light py-5 ms-4">
   <div class="row">
     <div class="col-12 col-md-5 text-center py-5">
       <div class="text-start" style="color:rgb(155, 10, 109) ;">Yeni Ürünler</div>
@@ -339,7 +345,10 @@ try {
     </div>
   </div>
 </div>
-<div class="container-fluid  mt-5">
+<!--NEW RECIPES-->
+
+  <!--DISCOUNT MENU -->
+  <div class="container-fluid  mt-5">
     <div class="text-center">
       <div style="color:rgb(155, 10, 109) ;">
         Satışta Olan Ürünlerimiz
@@ -353,53 +362,61 @@ try {
 
   <div class="container bg-light mt-5">
     <div class="row px-5">
-      <?php if (!empty($products)): ?>
-        <?php foreach ($products as $urun): ?>
-          <div class="col-6">
-            <div class="a container bg-white mb-3" style="border-radius: 5%;">
-              <div class="row mt-5 mb-5">
-                <div class="col-6 text-center">
-                  <img src="uploads/<?= htmlspecialchars($urun['Urun_Gorseli']) ?>" class="img-grow"
-                    style="border-radius:5%; height: 230px; width: 230px;">
+      <?php while ($urun = $result->fetch_assoc()): ?>
+        <div class="col-6">
+          <div class="a container bg-white mb-3" style="border-radius: 5%;">
+            <div class="row mt-5 mb-5">
+              <div class="col-6 text-center">
+                <img src="uploads/<?= htmlspecialchars($urun['Urun_Gorseli']) ?>" class="img-grow"
+                  style="border-radius:5%; height: 230px; width: 230px;">
+              </div>
+              <div class="col-6">
+                <div class="baslik3 fw-bold" style="font-size: 21px;"><?= htmlspecialchars($urun['Urun_Adi']) ?></div>
+                <div class="starts" style="color:rgb(155, 10, 109) ;">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
                 </div>
-                <div class="col-6">
-                  <div class="baslik3 fw-bold" style="font-size: 21px;"><?= htmlspecialchars($urun['Urun_Adi']) ?></div>
-                  <div class="starts" style="color:rgb(155, 10, 109) ;">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
+                <div style="font-size: 15px;margin-top: 10px;">
+                  <?= htmlspecialchars($urun['Urun_Aciklamasi']) ?>
+                </div>
+                <div class="baslik3 fw-bold d-inline-block" style="font-size:30px;margin-top: 15px;">
+                  <?= htmlspecialchars($urun['Urun_Fiyati']) ?> TL
+                </div>
+                <?php if (!empty($urun['Indirimli_Fiyat'])): ?>
+                  <div class="baslik3 fw-bold d-inline-block"
+                    style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
+                    <?= htmlspecialchars($urun['Indirimli_Fiyat']) ?> TL
                   </div>
-                  <div style="font-size: 15px;margin-top: 10px;">
-                    <?= htmlspecialchars($urun['Urun_Aciklamasi']) ?>
-                  </div>
-                  <div class="baslik3 fw-bold d-inline-block" style="font-size:30px;margin-top: 15px;">
-                    <?= htmlspecialchars($urun['Urun_Fiyati']) ?> TL
-                  </div>
-                  <?php if (!empty($urun['Indirimli_Fiyat'])): ?>
-                    <div class="baslik3 fw-bold d-inline-block"
-                      style="font-size:20px; color: rgb(182, 182, 182);text-decoration: line-through; margin-left: 10px;">
-                      <?= htmlspecialchars($urun['Indirimli_Fiyat']) ?> TL
-                    </div>
-                  <?php endif; ?>
-                  <div>
-                  <form action="php/add_to_cart.php" method="POST">
-      <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
-      <input type="hidden" name="boyut" value="1"> <input type="hidden" name="miktar" value="1"> <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
-       </form>
-                  </div>
+                <?php endif; ?>
+                <div>
+                <form action="php/add_to_cart.php" method="POST">
+    <input type="hidden" name="urun_id" value="<?= $urun['Urun_ID'] ?>">
+    <input type="hidden" name="boyut" value="1"> <!-- Varsayılan boyut -->
+    <input type="hidden" name="miktar" value="1"> <!-- Varsayılan miktar -->
+    <button type="submit" class="btn ms-2 text-white" style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;">Sepete Ekle</button>
+     </form>
                 </div>
               </div>
             </div>
           </div>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <p class="text-center">Şu anda satışta olan ürün bulunmamaktadır.</p>
-      <?php endif; ?>
+        </div>
+      <?php endwhile; ?>
     </div>
   </div>
-  <div class="container-fluid mt-5 bg-light">
+  <!--DISCOUNT MENU -->
+
+
+
+
+
+
+
+
+ <!--ABOUT US-->
+<div class="container-fluid mt-5 bg-light">
   <div class="row">
     <div class="col-12 col-md-6">
       <div class="d-flex" style="margin-left: 70px;">
@@ -420,6 +437,7 @@ try {
           <div class="mb-4">
             <i class="bi bi-check-circle" style="color:rgb(155, 10, 109) ;"></i> Kadın Girişimciler İçin İlham Verici Hikayeler
           </div>
+          <!-- BUTTON -->
           <div>
             <button type="button" class="btn ms-2 text-white"
               style="background-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 150px;margin-top: 50px;">Daha Fazla Bilgi</button>
@@ -439,6 +457,13 @@ try {
     </div>
   </div>
 </div>
+<!--ABOUT US-->
+
+
+
+
+
+<!--CLOCK-->
 <div class="container-fluid p-0 bg-dark mt-5" style="min-height: 200px; max-height: 50vh; height: auto;">
   <div class="row">
     <div class="baslik3 col-6 text-white p-5" style="font-weight:bold; font-size: 45px;">
@@ -475,7 +500,14 @@ try {
     </div>
   </div>
 </div>
-<div class="container-fluid  mt-5">
+<!--CLOCK-->
+
+
+
+
+
+  <!--MASTER CHEFS-->
+  <div class="container-fluid  mt-5">
     <div class="text-center">
       <div style="color:rgb(155, 10, 109) ;">
         Emekçi Kadınlarımız
@@ -538,11 +570,20 @@ try {
       </div>
     </div>
   </div>
+  <!--MASTER CHEFS-->
+
+  <!--VIEW MORE-->
   <div class="container text-center">
     <button type="button" class="btn ms-2 mt-5 mb-5 "
       style="border-color:rgb(155, 10, 109) ;border-radius: 20; height: 40px; width: 120px;margin-top: 13px;color:rgb(155, 10, 109) ;"> Daha fazla</button>
   </div>
-  <div class="container p-0 mt-5">
+  <!--VIEW MORE-->
+
+
+
+
+<!--TESTIMONIALS-->
+<div class="container p-0 mt-5">
   <div class="text-center">
     <div style="color:rgb(155, 10, 109) ;">
       Yorumlar
@@ -623,12 +664,17 @@ try {
     </div>
   </div>
 </div>
+<!--TESTIMONIALS-->
+
+ 
+
 <div class="container-fluid text-white p-0 mt-5" style="width: 100%;">
     <div class="row p-0 position-relative">
       <img src="images/62.png" class="img-fluid w-100 position-absolute"
         style="top: 0; left: 0; z-index: -1; height: 100%;">
       <div class="container d-flex flex-column flex-lg-row text-white border-bottom border-white"
         style="z-index: 2; background-color: transparent; padding: 20px; margin-top: 20px; width: 90%;">
+        <!-- BOTTOM BAR -->
         <div class="col-lg-3 mb-4">
           <h4>Ürünler</h4>
           <p>El Yapımı Takılar</p>
@@ -651,6 +697,7 @@ try {
           <p>İletişim</p>
           <p>Başarı Hikayeleri</p>
         </div>
+        <!-- ENTER YOUR EMAIL -->
         <div class="col-lg-3 mb-4">
           <div class="container rounded-4 text-center p-4"
             style="background-color: rgba(255, 255, 255, 0.2); height: 100%; width: 400px;">
@@ -664,6 +711,7 @@ try {
           </div>
         </div>
       </div>
+      <!-- BOTTOM BAR -->
       <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center text-white"
         style="z-index: 2; background-color: transparent; margin-top: 20px; padding: 20px; width: 90%;">
         <div class="d-flex align-items-center mb-3 mb-lg-0">
@@ -683,6 +731,8 @@ try {
       </div>
     </div>
   </div>
+
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -803,12 +853,14 @@ try {
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- !BOOTSTRAP'S jS-->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+  <!-- !BOOTSTRAP'S jS-->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
